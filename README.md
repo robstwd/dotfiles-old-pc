@@ -17,7 +17,7 @@ The following files are tracked via git.
     * `.conkyrc`
 3. bash config file (found at `~/`)
     * `.bashrc`
-4.  Arch linux config files  (found at `/etc/`)
+4.  Arch linux config files  (mostly found at `/etc/`)
     * `rc.conf`
     * `fstab`
     * `mkinitcpio.conf`
