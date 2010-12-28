@@ -1,0 +1,18 @@
+[user]
+	name = Rob Eastwood
+	mail = rob.eastwood8@gmail.com
+	email = rob.eastwood8@gmail.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	editor = nano
+[color]
+	ui = auto
+[merge]
+	tool = meld
+[gui]
+	spellingdictionary = none
