@@ -1,0 +1,62 @@
+double_buffer yes
+
+background yes
+own_window yes
+own_window_transparent yes
+
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+draw_borders no
+draw_shades no
+
+gap_x 5
+gap_y 5
+alignment top_left
+
+update_interval 1.0
+default_color white
+
+use_xft yes
+xftfont Sans:size=10
+use_spacer none
+
+minimum_size 300 400
+maximum_width 260
+
+override_utf8_locale yes
+
+color1 00ffff
+color2 00ff00
+color3 ffff00
+color4 ff0000
+
+TEXT
+  ${nodename} @ ${kernel}   $alignr${color1}::${color}
+  ${color1}::${color}   CPU load: $alignr${cpu cpu1}%   ${color1}::${color}
+  ${color1}::${color}   Load:$alignr ${loadavg}   ${color1}::${color}
+  ${color1}::${color}   Processes:  $alignr$processes   ${color1}::${color}
+  ${color1}::${color}   Memory: $alignr${mem} (${if_match ${memperc} < 20}${color2}${memperc}%${color}${else}${if_match ${memperc} < 50}${color3}${memperc}%${color}${else}${color4}${memperc}%${color}${endif}${endif})   ${color1}::${color}
+  ${color1}::${color}   Swap: $alignr$swapperc%   $alignr${color1}::${color}
+
+  ${color1}::${color}   Uptime: $alignr${uptime}   ${color1}::${color}
+  ${color1}::${color}   Down: $alignr${downspeedf eth0} kb/s   ${color1}::${color}
+  ${color1}::${color}   Up: $alignr${upspeedf eth0} kb/s   ${color1}::${color}
+  ${color1}::${color}   Arch: $alignr${if_match ${execi 1800 ((sudo pacman -Sy > /dev/null 2>&1) ; (pacman -Qu | wc -l))} == 0}${color2}up to date${color}${else}${color3}${execi 1800 (pacman -Qu | wc -l)} new packages${color}${endif}   ${color1}::${color}
+# ${cpugraph cpu0 200,220 00FF00 FF0000 -t 75}
+
+  Git repos
+  ${color1}::${color} dotfiles $alignr${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/dotfiles}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${color}${else}${color red}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${color}${endif}    ${color1}::${color}
+  ${color1}::${color} git_status $alignr${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${else}${color red}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${endif}    ${color1}::${color}
+  ${color1}::${color} sample_app $alignr${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/rails_projects/sample_app}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/rails_projects/sample_app}${color}${else}${color red}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/rails_projects/sample_app}${color}${endif}    ${color1}::${color}
+
+# Test the functions of no git repo and not a file
+  #~ ${color1}::${color} CDA_validator $alignr${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/CDA_validator}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/CDA_validator}${color}${else}${color red}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/CDA_validator}${color}${endif}    ${color1}::${color}
+  #~ ${color1}::${color} random_file $alignr${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/CDA_validator/test.xml}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/CDA_validator/test.xml}${color}${else}${color red}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/CDA_validator/test.xml}${color}${endif}    ${color1}::${color}
+
+# old
+# ${color1}::${color} git_status $alignr${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}    ${color1}::${color}
+#  ${color1}::${color} sample_app $alignr${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/rails_projects/sample_app}    ${color1}::${color}
+
+# test
+# ${color1}::${color} test colour  $alignr ${if_match "up to date" == "up to date"} ${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${else}${color4}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${endif}    ${color1}::${color}
