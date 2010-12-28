@@ -258,6 +258,197 @@
 			</action>
 		</item>
 		<separator/>
+		<menu id="system-menu-86715" label="Configs">
+			<menu id="system-menu-86715-741456" label="Arch">
+				<item label="fstab (ro)">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /etc/fstab
+						</execute>
+					</action>
+				</item>
+				<item label="hosts (ro)">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /etc/hosts
+						</execute>
+					</action>
+				</item>
+				<item label="hosts.allow (ro)">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /etc/hosts.allow
+						</execute>
+					</action>
+				</item>
+				<item label="hosts.deny (ro)">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /etc/hosts.deny
+						</execute>
+					</action>
+				</item>
+				<item label="locale.gen (ro)">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /etc/locale.gen
+						</execute>
+					</action>
+				</item>
+				<item label="mkinitcpio.conf (ro)">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /etc/mkinitcpio.conf
+						</execute>
+					</action>
+				</item>
+				<item label="mirrorlist (ro)">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /etc/pacman.d/mirrorlist
+						</execute>
+					</action>
+				</item>
+				<item label="modprobe.conf (ro)">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /etc/modprobe.d/modprobe.conf
+						</execute>
+					</action>
+				</item>
+				<item label="pacman.conf (ro)">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /etc/pacman.conf
+						</execute>
+					</action>
+				</item>
+				<item label="rc.conf (ro)">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /etc/rc.conf
+						</execute>
+					</action>
+				</item>
+				<item label="resolv.conf (ro)">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /etc/resolv.conf
+						</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="system-menu-86715-931312" label="bash">
+				<item label="bashrc">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.bashrc
+						</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="system-menu-86715-671154" label="conky">
+				<item label="conkyrc">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.conkyrc
+						</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="system-menu-86715-852325" label="git">
+				<item label="gitconfig">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.gitconfig
+						</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="system-menu-86715-9727" label="openbox">
+				<item label="rc.xml">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.config/openbox/rc.xml
+						</execute>
+					</action>
+				</item>
+				<item label="autostart.sh">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.config/openbox/autostart.sh
+						</execute>
+					</action>
+				</item>
+				<item label="menu.xml">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.config/openbox/menu.xml
+						</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="system-menu-86715-90280" label="slim">
+				<item label="slim.conf">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /etc/slim.conf
+						</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="system-menu-86715-252416" label="terminal (urxvt)">
+				<item label="helpers.rc">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.config/xfce4/helpers.rc
+						</execute>
+					</action>
+				</item>
+				<item label="Xdefaults">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.Xdefaults
+						</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="system-menu-86715-85292" label="testing">
+				<item label="autotest">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.autotest
+						</execute>
+					</action>
+				</item>
+				<item label="rspec">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.rspec
+						</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="system-menu-86715-602528" label="tint2">
+				<item label="tint2rc">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.config/tint2/tint2rc
+						</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="system-menu-86715-412711" label="xorg">
+				<item label="xorg.conf">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /etc/X11/xorg.conf
+						</execute>
+					</action>
+				</item>
+			</menu>
+		</menu>
+		<separator/>
 		<item label="Reconfigure Openbox">
 			<action name="Reconfigure"/>
 		</item>
