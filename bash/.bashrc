@@ -27,3 +27,5 @@ alias gg='git gui'
 #~ PS1='\e[1;32m\u@\H \e[1;37m\w \e[1;32m$ \e[1;37m'
 #~ PS1='\[\e[37m\][\t \W]$ \e[0m'
 PS1='  :: [ \t ] [ \W ]\n  >> '
+
+[[ $- == *i* ]]   &&   . /home/rob/.config/git/git-prompt.sh
