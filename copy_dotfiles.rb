@@ -45,6 +45,7 @@ FileUtils.cp(archfiles, "#{dest}arch/")
 gitfiles = []
 path = "/home/rob/"
 gitfiles << "#{path}.gitconfig"
+gitfiles << "/home/rob/.config/git/git-prompt.sh"
 FileUtils.cp(gitfiles, "#{dest}git/")
 
 # Terminal urxvt
