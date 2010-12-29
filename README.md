@@ -30,8 +30,9 @@ The following files are tracked via git.
     * `pacman.conf`
     * `pacman.d/mirrorlist`
     * and `~/.xinitrc`
-5. git config file (found at `~/`)
-    * `.gitconfig`
+5. git config files (found at `~/`)
+    * `~/.gitconfig`
+    * `~/.config/git/git-prompt.sh`
 6. Terminal urxvt config files (found at `~/`)
     * `.Xdefaults`
     * and `~/.config/xfce4/helpers.rc`
