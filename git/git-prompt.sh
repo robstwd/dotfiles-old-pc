@@ -45,11 +45,11 @@
         #### vcs state colors
                  init_vcs_color=${init_vcs_color:-WHITE}        # initial
                 # clean_vcs_color=${clean_vcs_color:-blue}        # nothing to commit (working directory clean) # original line
-                clean_vcs_color=${clean_vcs_color:-green}        # nothing to commit (working directory clean)
+                clean_vcs_color=${clean_vcs_color:-magenta}        # nothing to commit (working directory clean)
              modified_vcs_color=${modified_vcs_color:-red}      # Changed but not updated:
                 added_vcs_color=${added_vcs_color:-green}       # Changes to be committed:
              addmoded_vcs_color=${addmoded_vcs_color:-yellow}
-            untracked_vcs_color=${untracked_vcs_color:-BLUE}    # Untracked files:
+            untracked_vcs_color=${untracked_vcs_color:-RED}    # Untracked files:
                    op_vcs_color=${op_vcs_color:-MAGENTA}
              detached_vcs_color=${detached_vcs_color:-RED}
 
