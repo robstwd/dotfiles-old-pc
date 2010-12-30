@@ -28,7 +28,7 @@
         #### dir, rc, root color
         cols=`tput colors`                              # in emacs shell-mode tput colors returns -1
         if [[ -n "$cols" && $cols -ge 8 ]];  then       #  if terminal supports colors
-                dir_color=${dir_color:-CYAN}
+                dir_color=${dir_color:-yellow}						# original was 'CYAN' (ie bold)
                 rc_color=${rc_color:-red}
                 user_id_color=${user_id_color:-blue}
                 root_id_color=${root_id_color:-magenta}
@@ -659,15 +659,8 @@ prompt_command_function() {
 
         #~ PS1="$colors_reset$rc$head_local$color_who_where$dir_color$cwd$tail_local$dir_color$prompt_char $colors_reset" # original line
         #~ PS1="  :: [ \t ] $colors_reset$rc$head_local$dir_color$cwd$tail_local$dir_color$prompt_char $colors_reset \n  >> "
-        PS1="[ \t ] $colors_reset$rc$head_local$dir_color [ $cwd ] $tail_local$dir_color \n  $prompt_char $colors_reset"
+        PS1="[ \t ] $colors_reset$rc$head_local$dir_color [ $cwd ] $tail_local$dir_color$colors_reset \n  $prompt_char "
         
-        
-        
-        
-        
-        
-        
-
         unset head_local tail_local pwd
 }
 
