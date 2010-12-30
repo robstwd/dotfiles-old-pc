@@ -339,13 +339,6 @@
 				</item>
 			</menu>
 			<menu id="system-menu-86715-931312" label="bash">
-				<item label="git-prompt.sh">
-					<action name="Execute">
-						<execute>
-							/usr/bin/geany /home/rob/.config/git/git-prompt.sh
-						</execute>
-					</action>
-				</item>
 				<item label="bashrc">
 					<action name="Execute">
 						<execute>
@@ -364,6 +357,13 @@
 				</item>
 			</menu>
 			<menu id="system-menu-86715-852325" label="git">
+				<item label="git-prompt.sh">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.config/git/git-prompt.sh
+						</execute>
+					</action>
+				</item>
 				<item label="gitconfig">
 					<action name="Execute">
 						<execute>
