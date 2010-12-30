@@ -22,6 +22,7 @@ FileUtils.cp(conkyfiles, "#{dest}conky/")
 bashfiles = []
 path = "/home/rob/"
 bashfiles << "#{path}.bashrc"
+bashfiles << "#{path}.config/git/git-prompt.sh"
 FileUtils.cp(bashfiles, "#{dest}bash/")
 
 # Arch linux config files
