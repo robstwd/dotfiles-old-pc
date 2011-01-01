@@ -158,6 +158,13 @@
 				</execute>
 			</action>
 		</item>
+		<item label="Alsamixer">
+			<action name="Execute">
+				<execute>
+					urxvt -e &quot;alsamixer&quot;
+				</execute>
+			</action>
+		</item>
 		<item label="MPlayer">
 			<action name="Execute">
 				<command>
