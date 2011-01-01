@@ -68,6 +68,13 @@
 		</item>
 	</menu>
 	<menu id="apps-term-menu" label="Terminals">
+		<item label="irb">
+			<action name="Execute">
+				<execute>
+					urxvt -e &quot;irb&quot;
+				</execute>
+			</action>
+		</item>
 		<item label="urxvt">
 			<action name="Execute">
 				<execute>
@@ -266,6 +273,13 @@
 		</item>
 		<separator/>
 		<menu id="system-menu-86715" label="Configs">
+			<item label="dotfile backup">
+				<action name="Execute">
+					<execute>
+						/usr/bin/ruby /home/rob/scripts/Projects/dotfiles/copy_dotfiles.rb
+					</execute>
+				</action>
+			</item>
 			<menu id="system-menu-86715-741456" label="Arch">
 				<item label="fstab (ro)">
 					<action name="Execute">
