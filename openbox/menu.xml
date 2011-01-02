@@ -98,6 +98,13 @@
 		</item>
 	</menu>
 	<menu id="apps-net-menu" label="Internet">
+		<item label="Transmission">
+			<action name="Execute">
+				<execute>
+					/usr/bin/transmission-gtk
+				</execute>
+			</action>
+		</item>
 		<item label="Chrome">
 			<action name="Execute">
 				<execute>
