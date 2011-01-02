@@ -659,7 +659,7 @@ prompt_command_function() {
 
         #~ PS1="$colors_reset$rc$head_local$color_who_where$dir_color$cwd$tail_local$dir_color$prompt_char $colors_reset" # original line
         #~ PS1="  :: [ \t ] $colors_reset$rc$head_local$dir_color$cwd$tail_local$dir_color$prompt_char $colors_reset \n  >> "
-        PS1="[ \t ] $colors_reset$rc$head_local$dir_color [ $cwd ] $tail_local$dir_color$colors_reset \n  $prompt_char "
+        PS1="┌─[ \t ] $colors_reset$rc$head_local$dir_color [ $cwd ] $tail_local$dir_color$colors_reset \n└─> " #"$prompt_char "
         
         unset head_local tail_local pwd
 }
