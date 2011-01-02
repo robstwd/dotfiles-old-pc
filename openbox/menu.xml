@@ -137,31 +137,17 @@
 		</item>
 	</menu>
 	<menu id="apps-multimedia-menu" label="Multimedia">
-		<item label="xbmc">
+		<item label="Alsamixer">
 			<action name="Execute">
 				<execute>
-					/usr/bin/xbmc
+					urxvt -e &quot;alsamixer&quot;
 				</execute>
 			</action>
 		</item>
-		<item label="xfburn">
+		<item label="Audacity">
 			<action name="Execute">
 				<execute>
-					xfburn
-				</execute>
-			</action>
-		</item>
-		<item label="VLC">
-			<action name="Execute">
-				<execute>
-					vlc
-				</execute>
-			</action>
-		</item>
-		<item label="mp3splt">
-			<action name="Execute">
-				<execute>
-					/usr/bin/mp3splt-gtk
+					/usr/bin/audacity
 				</execute>
 			</action>
 		</item>
@@ -172,10 +158,10 @@
 				</execute>
 			</action>
 		</item>
-		<item label="Alsamixer">
+		<item label="mp3splt">
 			<action name="Execute">
 				<execute>
-					urxvt -e &quot;alsamixer&quot;
+					/usr/bin/mp3splt-gtk
 				</execute>
 			</action>
 		</item>
@@ -192,6 +178,27 @@
 						MPlayer
 					</wmclass>
 				</startupnotify>
+			</action>
+		</item>
+		<item label="VLC">
+			<action name="Execute">
+				<execute>
+					vlc
+				</execute>
+			</action>
+		</item>
+		<item label="xbmc">
+			<action name="Execute">
+				<execute>
+					/usr/bin/xbmc
+				</execute>
+			</action>
+		</item>
+		<item label="xfburn">
+			<action name="Execute">
+				<execute>
+					xfburn
+				</execute>
 			</action>
 		</item>
 	</menu>
