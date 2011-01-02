@@ -180,6 +180,13 @@
 				</startupnotify>
 			</action>
 		</item>
+		<item label="python-iview">
+			<action name="Execute">
+				<execute>
+					/usr/bin/python2 /home/rob/PC\ stuff/Software/python-iview/iview-gtk
+				</execute>
+			</action>
+		</item>
 		<item label="VLC">
 			<action name="Execute">
 				<execute>
