@@ -55,7 +55,8 @@ nitrogen --restore &
 thunar --daemon &
 
 #conky system monitor
-conky -q &
+#~ conky -q &
+~/.config/conky/scripts/ConkyStartup.sh
 
 # starting Xscreensaver
 xscreensaver -no-splash &
