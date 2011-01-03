@@ -14,8 +14,9 @@ FileUtils.cp(openboxfiles, "#{dest}openbox/")
 
 # conky config files
 conkyfiles = []
-path = "/home/rob/"
-conkyfiles << "#{path}.conkyrc"
+path = "/home/rob/.config/conky/"
+conkyfiles << "#{path}conky_topleft"
+conkyfiles << "#{path}scripts/ConkyStartup.sh"
 FileUtils.cp(conkyfiles, "#{dest}conky/")
 
 # bash
