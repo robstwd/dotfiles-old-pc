@@ -13,8 +13,9 @@ The following files are tracked via git.
     * `menu.xml`
     * `autostart.sh`    
     * `rc.xml`
-2. conky config file (found at `~/`)
-    * `.conkyrc`
+2. conky config files (found at `~/.config/conky/`)
+    * `conkyrc_topleft`
+    * `ConkyStartup.sh`
 3. bash config file (found at `~/`)
     * `.bashrc`
 4.  Arch linux config files  (mostly found at `/etc/`)
