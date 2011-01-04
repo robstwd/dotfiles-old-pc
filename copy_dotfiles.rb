@@ -10,6 +10,7 @@ path = "/home/rob/.config/openbox/"
 openboxfiles << "#{path}menu.xml"
 openboxfiles << "#{path}autostart.sh"
 openboxfiles << "#{path}rc.xml" 
+openboxfiles << "/home/rob/.xinitrc" 
 FileUtils.cp(openboxfiles, "#{dest}openbox/")
 
 # conky config files
