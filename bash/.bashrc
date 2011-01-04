@@ -3,7 +3,8 @@
 [ -z "$PS1" ] && return
 
 # default apps
-EDITOR="/usr/bin/nano"
+EDITOR=nano
+export EDITOR
 
 # key bindings
 ## make tab cycle through commands rather than listing
