@@ -70,3 +70,8 @@ TEXT
   ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.254" "Billion Router"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.254 "up" "down"}${if_existing /home/rob/.status/192.168.1.254.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
   ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "150.101.180.24" "Internode"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 150.101.180.24 "up" "down"}${if_existing /home/rob/.status/150.101.180.24.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
   ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "66.102.11.104" "Google"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 66.102.11.104 "up" "down"}${if_existing /home/rob/.status/66.102.11.104.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
+
+  ${color1}FILE SYSEM$color
+  ${color1}::${color}   Root:  $alignr ${fs_used_perc /}%  ${fs_bar 7 /}
+  ${color1}::${color}   Home:  $alignr ${fs_used_perc /home/rob}%  ${fs_bar 7 /home/rob}
+
