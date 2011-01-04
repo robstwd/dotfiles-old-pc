@@ -390,10 +390,17 @@
 				</item>
 			</menu>
 			<menu id="system-menu-86715-671154" label="conky">
-				<item label="conkyrc">
+				<item label="conky_topleft">
 					<action name="Execute">
 						<execute>
-							/usr/bin/geany /home/rob/.conkyrc
+							/usr/bin/geany /home/rob/.config/conky/conky_topleft
+						</execute>
+					</action>
+				</item>
+				<item label="ConkyStartup.sh">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.config/conky/scripts/ConkyStartup.sh
 						</execute>
 					</action>
 				</item>
