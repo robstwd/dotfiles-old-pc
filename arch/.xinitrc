@@ -9,4 +9,4 @@
 # exec startxfce4
 # ...or the Window Manager of your choice
 # exec enlightenment_start
-exec openbox-session
+exec ck-launch-session openbox-session
