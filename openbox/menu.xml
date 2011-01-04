@@ -243,6 +243,13 @@
 		</item>
 	</menu>
 	<menu id="apps-graphics-menu" label="Graphics">
+		<item label="Mirage">
+			<action name="Execute">
+				<execute>
+					/usr/bin/mirage
+				</execute>
+			</action>
+		</item>
 		<item label="Nitrogen">
 			<action name="Execute">
 				<execute>
@@ -250,10 +257,10 @@
 				</execute>
 			</action>
 		</item>
-		<item label="Mirage">
+		<item label="Shotwell">
 			<action name="Execute">
 				<execute>
-					/usr/bin/mirage
+					/usr/bin/shotwell
 				</execute>
 			</action>
 		</item>
