@@ -45,7 +45,10 @@ TEXT
   ${color1}::${color}   Down: $alignr${downspeedf eth0} kb/s   ${color1}::${color}
   ${color1}::${color}   Up: $alignr${upspeedf eth0} kb/s   ${color1}::${color}
   ${color1}::${color}   Arch: $alignr${if_match ${execi 1800 ((sudo pacman -Sy > /dev/null 2>&1) ; (pacman -Qu | wc -l))} == 0}${color2}up to date${color}${else}${color3}${execi 1800 (pacman -Qu | wc -l)} new packages${color}${endif}   ${color1}::${color}
-# ${cpugraph cpu0 200,220 00FF00 FF0000 -t 75}
+
+  ${color1}FILE SYSEM$color
+  ${color1}::${color}   Root:  $alignr ${fs_used_perc /}%  ${fs_bar 7 /}
+  ${color1}::${color}   Home:  $alignr ${fs_used_perc /home/rob}%  ${fs_bar 7 /home/rob}
 
   ${color1}GIT REPOS${color}
   ${color1}::${color}   dotfiles $alignr${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/dotfiles}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${color}${else}${color red}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${color}${endif}    ${color1}::${color}
@@ -63,15 +66,12 @@ TEXT
   ${color1}::${color}   Ave daily allowance per quota: $alignr ${execi 300 cat /home/rob/scripts/outputs/InternodeScrape/node-avdayquota.txt} MB   ${color1}::${color}
   ${color1}::${color}   Current Internode advisories: $alignr  ${execi 300 cat /home/rob/scripts/outputs/InternodeAdvisories/numberofadvisories.txt}   ${color1}::${color}
 
-  ${color1}NETWORK STATUS$color
-  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.12" "Kid's PC"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.12 "up" "down"}${if_existing /home/rob/.status/192.168.1.12.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
-  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.11" "Laptop"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.11 "up" "down"}${if_existing /home/rob/.status/192.168.1.11.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
-  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.50" "Belkin AP"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.50 "up" "down"}${if_existing /home/rob/.status/192.168.1.50.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
-  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.254" "Billion Router"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.254 "up" "down"}${if_existing /home/rob/.status/192.168.1.254.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
-  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "150.101.180.24" "Internode"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 150.101.180.24 "up" "down"}${if_existing /home/rob/.status/150.101.180.24.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
-  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "66.102.11.104" "Google"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 66.102.11.104 "up" "down"}${if_existing /home/rob/.status/66.102.11.104.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
+#  ${color1}NETWORK STATUS$color
+#  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.12" "Kid's PC"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.12 "up" "down"}${if_existing /home/rob/.status/192.168.1.12.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
+#  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.11" "Laptop"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.11 "up" "down"}${if_existing /home/rob/.status/192.168.1.11.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
+#  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.50" "Belkin AP"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.50 "up" "down"}${if_existing /home/rob/.status/192.168.1.50.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
+#  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.254" "Billion Router"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.254 "up" "down"}${if_existing /home/rob/.status/192.168.1.254.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
+#  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "150.101.180.24" "Internode"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 150.101.180.24 "up" "down"}${if_existing /home/rob/.status/150.101.180.24.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
+#  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "66.102.11.104" "Google"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 66.102.11.104 "up" "down"}${if_existing /home/rob/.status/66.102.11.104.up}${color green}+++$else${color red}---$endif   ${color1}::${color}
 
-  ${color1}FILE SYSEM$color
-  ${color1}::${color}   Root:  $alignr ${fs_used_perc /}%  ${fs_bar 7 /}
-  ${color1}::${color}   Home:  $alignr ${fs_used_perc /home/rob}%  ${fs_bar 7 /home/rob}
 
