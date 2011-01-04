@@ -273,6 +273,13 @@
 				</execute>
 			</action>
 		</item>
+		<item label="Lxappearance">
+			<action name="Execute">
+				<execute>
+					/usr/bin/lxappearance
+				</execute>
+			</action>
+		</item>
 		<item label="Tint2 config">
 			<action name="Execute">
 				<execute>
