@@ -729,7 +729,7 @@
 
   # end of the example
 -->
-<!-- copied from the Arch openbox wiki page https://wiki.archlinux.org/index.php/Openbox
+    <!-- copied from the Arch openbox wiki page https://wiki.archlinux.org/index.php/Openbox
     <application name="URxvt">
 			<decor>no</decor>
 			<focus>yes</focus>
