@@ -8,10 +8,10 @@
 		</action>
 	</item>
 	<menu id="apps-accessories-menu" label="Accessories">
-		<item label="Sauerbraten">
+		<item label="KeePassX">
 			<action name="Execute">
 				<execute>
-					/usr/bin/sauerbraten-client
+					/usr/bin/keepassx
 				</execute>
 			</action>
 		</item>
@@ -22,17 +22,17 @@
 				</execute>
 			</action>
 		</item>
+		<item label="SpeedCrunch">
+			<action name="Execute">
+				<execute>
+					/usr/bin/speedcrunch
+				</execute>
+			</action>
+		</item>
 		<item label="Virtualbox">
 			<action name="Execute">
 				<execute>
 					/usr/bin/VirtualBox
-				</execute>
-			</action>
-		</item>
-		<item label="KeePassX">
-			<action name="Execute">
-				<execute>
-					/usr/bin/keepassx
 				</execute>
 			</action>
 		</item>
