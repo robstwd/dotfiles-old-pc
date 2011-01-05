@@ -393,6 +393,13 @@
 						</execute>
 					</action>
 				</item>
+				<item label="xinitrc">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.xinitrc
+						</execute>
+					</action>
+				</item>
 			</menu>
 			<menu id="system-menu-86715-931312" label="bash">
 				<item label="bashrc">
