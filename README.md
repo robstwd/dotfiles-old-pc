@@ -14,8 +14,8 @@ The following files are tracked via git.
     * `autostart.sh`    
     * `rc.xml`
 2. conky config files (found at `~/.config/conky/`)
-    * `conkyrc_topleft`
-    * `conkyrc_topright`
+    * `conky_topleft`
+    * `conky_topright`
     * `ConkyStartup.sh`
 3. bash config file (found at `~/`)
     * `.bashrc`
