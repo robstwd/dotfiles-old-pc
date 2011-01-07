@@ -32,7 +32,7 @@ archfiles << "#{path}rc.conf"
 archfiles << "#{path}fstab"
 archfiles << "#{path}mkinitcpio.conf"
 archfiles << "#{path}modprobe.d/modprobe.conf"
-archfiles << "#{path}resolv.conf"
+#~ archfiles << "#{path}resolv.conf" # commented out as this file automatically changes when boot with network or no network
 archfiles << "#{path}hosts"
 archfiles << "#{path}hosts.deny"
 archfiles << "#{path}hosts.allow"
