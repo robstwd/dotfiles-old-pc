@@ -243,6 +243,13 @@
 		</item>
 	</menu>
 	<menu id="apps-graphics-menu" label="Graphics">
+		<item label="Gimp">
+			<action name="Execute">
+				<execute>
+					/usr/bin/gimp
+				</execute>
+			</action>
+		</item>
 		<item label="Mirage">
 			<action name="Execute">
 				<execute>
