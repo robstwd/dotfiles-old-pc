@@ -24,7 +24,6 @@ The following files are tracked via git.
     * `fstab`
     * `mkinitcpio.conf`
     * `modprobe.d/modprobe.conf`
-    * `resolv.conf`
     * `hosts`
     * `hosts.deny`
     * `hosts.allow`
