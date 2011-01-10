@@ -45,13 +45,6 @@
 		</item>
 	</menu>
 	<menu id="apps-editors-menu" label="Editors">
-		<item label="Meld">
-			<action name="Execute">
-				<execute>
-					/usr/bin/meld
-				</execute>
-			</action>
-		</item>
 		<item label="Geany">
 			<action name="Execute">
 				<execute>
@@ -63,6 +56,20 @@
 			<action name="Execute">
 				<execute>
 					/usr/bin/leafpad
+				</execute>
+			</action>
+		</item>
+		<item label="Meld">
+			<action name="Execute">
+				<execute>
+					/usr/bin/meld
+				</execute>
+			</action>
+		</item>
+		<item label="Redcar">
+			<action name="Execute">
+				<execute>
+					/usr/bin/redcar
 				</execute>
 			</action>
 		</item>
