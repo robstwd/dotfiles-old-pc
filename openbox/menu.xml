@@ -587,6 +587,13 @@
 				</execute>
 			</action>
 		</item>
+		<item label="vim">
+			<action name="Execute">
+				<execute>
+					urxvt -e &quot;vim&quot;
+				</execute>
+			</action>
+		</item>
 		<separator label="Applications"/>
 		<menu id="apps-accessories-menu"/>
 		<menu id="apps-editors-menu"/>
