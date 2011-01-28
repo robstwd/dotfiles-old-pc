@@ -46,3 +46,8 @@ The following files are tracked via git.
 10. testing config files (found at `~/`)
     * `.autotest`
     * `.rspec`
+11. vim files (found at `~/`)
+    * `.vimrc`
+
+## TODO
+1. Incorporate the back up of the other vim config/plugin files as a 'job lot'
