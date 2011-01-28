@@ -15,6 +15,13 @@
 				</execute>
 			</action>
 		</item>
+		<item label="Klavaro">
+			<action name="Execute">
+				<execute>
+					/usr/bin/klavaro
+				</execute>
+			</action>
+		</item>
 		<item label="Remmina">
 			<action name="Execute">
 				<execute>
