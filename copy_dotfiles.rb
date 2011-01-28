@@ -80,3 +80,9 @@ path = "/home/rob/"
 testingfiles << "#{path}.autotest"
 testingfiles << "#{path}.rspec"
 FileUtils.cp(testingfiles, "#{dest}testing/")
+
+# vim files
+vimfiles = []
+path = "/home/rob/"
+vimfiles << "#{path}.vimrc"
+FileUtils.cp(vimfiles, "#{dest}vim/")
