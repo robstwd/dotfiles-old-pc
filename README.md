@@ -48,6 +48,4 @@ The following files are tracked via git.
     * `.rspec`
 11. vim files (found at `~/`)
     * `.vimrc`
-
-## TODO
-1. Incorporate the back up of the other vim config/plugin files as a 'job lot'
+    * files in `~/.vim/` subdirectories
