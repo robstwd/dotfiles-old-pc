@@ -74,8 +74,10 @@ set background=dark " When set to "dark", Vim will try to use colors that look
  
 set mouse=a         " Enable the use of the mouse.
 
-set nocompatible
-syntax on
+set nocompatible		" We're running Vim, not Vi!
+syntax on           " Enable syntax highlighting
 filetype plugin indent on
-filetype indent on
-filetype plugin on
+filetype indent on 	" Enable filetype-specific indenting
+filetype plugin on	" Enable filetype-specific plugins
+filetype on					" Enable filetype detection
+compiler ruby				" Enable compiler support for ruby
