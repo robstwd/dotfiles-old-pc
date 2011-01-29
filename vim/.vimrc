@@ -81,3 +81,6 @@ filetype indent on 	" Enable filetype-specific indenting
 filetype plugin on	" Enable filetype-specific plugins
 filetype on					" Enable filetype detection
 compiler ruby				" Enable compiler support for ruby
+
+" from http://stackoverflow.com/questions/3787821/what-components-make-vim-a-good-great-ruby-editor
+map <Leader>r :w! <bar> !ruby %<CR>
