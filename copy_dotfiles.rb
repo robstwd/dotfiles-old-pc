@@ -82,7 +82,8 @@ testingfiles << "#{path}.rspec"
 FileUtils.cp(testingfiles, "#{dest}testing/")
 
 # vim files
-vimfiles = []
+vimfiles = Dir.glob("/home/rob/.vim/*/*")
+puts vimfiles.length
 path = "/home/rob/"
 vimfiles << "#{path}.vimrc"
-FileUtils.cp(vimfiles, "#{dest}vim/")
+FileUtils.cp_r(vimfiles, "#{dest}vim/")
