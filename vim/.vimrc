@@ -7,7 +7,7 @@
        
 set tabstop=4       " Number of spaces that a <Tab> in the file counts for.
  
-set shiftwidth=4    " Number of spaces to use for each step of (auto)indent.
+set shiftwidth=2    " Number of spaces to use for each step of (auto)indent.
  
 set expandtab       " Use the appropriate number of spaces to insert a <Tab>.
                     " Spaces are used in indents with the '>' and '<' commands
