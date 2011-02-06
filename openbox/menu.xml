@@ -262,6 +262,237 @@
 				</execute>
 			</action>
 		</item>
+		<menu id="apps-fileman-menu-512222" label="Puzzles">
+			<item label="BlackBox">
+				<action name="Execute">
+					<execute>
+						/usr/bin/puzzles-blackbox
+					</execute>
+				</action>
+			</item>
+			<item label="Bridges">
+				<action name="Execute">
+					<execute>
+						/usr/bin/bridges
+					</execute>
+				</action>
+			</item>
+			<item label="Cube">
+				<action name="Execute">
+					<execute>
+						/usr/bin/puzzles-cube
+					</execute>
+				</action>
+			</item>
+			<item label="Dominosa">
+				<action name="Execute">
+					<execute>
+						/usr/bin/dominosa
+					</execute>
+				</action>
+			</item>
+			<item label="Fifteen">
+				<action name="Execute">
+					<execute>
+						/usr/bin/fifteen
+					</execute>
+				</action>
+			</item>
+			<item label="Filling">
+				<action name="Execute">
+					<execute>
+						/usr/bin/filling
+					</execute>
+				</action>
+			</item>
+			<item label="Flip">
+				<action name="Execute">
+					<execute>
+						/usr/bin/flip
+					</execute>
+				</action>
+			</item>
+			<item label="Galaxies">
+				<action name="Execute">
+					<execute>
+						/usr/bin/galaxies
+					</execute>
+				</action>
+			</item>
+			<item label="Guess">
+				<action name="Execute">
+					<execute>
+						/usr/bin/guess
+					</execute>
+				</action>
+			</item>
+			<item label="Inertia">
+				<action name="Execute">
+					<execute>
+						/usr/bin/inertia
+					</execute>
+				</action>
+			</item>
+			<item label="Keen">
+				<action name="Execute">
+					<execute>
+						/usr/bin/keen
+					</execute>
+				</action>
+			</item>
+			<item label="Light Up">
+				<action name="Execute">
+					<execute>
+						/usr/bin/lightup
+					</execute>
+				</action>
+			</item>
+			<item label="Loopy">
+				<action name="Execute">
+					<execute>
+						/usr/bin/loopy
+					</execute>
+				</action>
+			</item>
+			<item label="Magnets">
+				<action name="Execute">
+					<execute>
+						/usr/bin/magnets
+					</execute>
+				</action>
+			</item>
+			<item label="Map">
+				<action name="Execute">
+					<execute>
+						/usr/bin/map
+					</execute>
+				</action>
+			</item>
+			<item label="Mines">
+				<action name="Execute">
+					<execute>
+						/usr/bin/mines
+					</execute>
+				</action>
+			</item>
+			<item label="Net">
+				<action name="Execute">
+					<execute>
+						/usr/bin/net
+					</execute>
+				</action>
+			</item>
+			<item label="Netslide">
+				<action name="Execute">
+					<execute>
+						/usr/bin/netslide
+					</execute>
+				</action>
+			</item>
+			<item label="Pattern">
+				<action name="Execute">
+					<execute>
+						/usr/bin/pattern
+					</execute>
+				</action>
+			</item>
+			<item label="Pegs">
+				<action name="Execute">
+					<execute>
+						/usr/bin/pegs
+					</execute>
+				</action>
+			</item>
+			<item label="(Range)">
+				<action name="Execute">
+					<execute>
+					</execute>
+				</action>
+			</item>
+			<item label="(Rectangles)">
+				<action name="Execute">
+					<execute>
+					</execute>
+				</action>
+			</item>
+			<item label="Same Game">
+				<action name="Execute">
+					<execute>
+						/usr/bin/samegame
+					</execute>
+				</action>
+			</item>
+			<item label="Signpost">
+				<action name="Execute">
+					<execute>
+						/usr/bin/signpost
+					</execute>
+				</action>
+			</item>
+			<item label="Singles">
+				<action name="Execute">
+					<execute>
+						/usr/bin/singles
+					</execute>
+				</action>
+			</item>
+			<item label="Sixteen">
+				<action name="Execute">
+					<execute>
+						/usr/bin/sixteen
+					</execute>
+				</action>
+			</item>
+			<item label="Slant">
+				<action name="Execute">
+					<execute>
+						/usr/bin/slant
+					</execute>
+				</action>
+			</item>
+			<item label="Solo">
+				<action name="Execute">
+					<execute>
+						/usr/bin/solo
+					</execute>
+				</action>
+			</item>
+			<item label="Tents">
+				<action name="Execute">
+					<execute>
+						/usr/bin/tents
+					</execute>
+				</action>
+			</item>
+			<item label="Towers">
+				<action name="Execute">
+					<execute>
+						/usr/bin/towers
+					</execute>
+				</action>
+			</item>
+			<item label="Twiddle">
+				<action name="Execute">
+					<execute>
+						/usr/bin/twiddle
+					</execute>
+				</action>
+			</item>
+			<item label="Unequal">
+				<action name="Execute">
+					<execute>
+						/usr/bin/unequal
+					</execute>
+				</action>
+			</item>
+			<item label="Untangle">
+				<action name="Execute">
+					<execute>
+						/usr/bin/untangle
+					</execute>
+				</action>
+			</item>
+		</menu>
 	</menu>
 	<menu id="apps-graphics-menu" label="Graphics">
 		<item label="Gimp">
