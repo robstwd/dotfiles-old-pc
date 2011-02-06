@@ -224,6 +224,18 @@
 		</item>
 	</menu>
 	<menu id="apps-fileman-menu" label="Games">
+		<item label="AssaultCube">
+			<action name="Execute">
+				<command>
+					assaultcube
+				</command>
+				<startupnotify>
+					<enabled>
+						yes
+					</enabled>
+				</startupnotify>
+			</action>
+		</item>
 		<item label="Hedgewars">
 			<action name="Execute">
 				<execute>
@@ -243,16 +255,11 @@
 				</startupnotify>
 			</action>
 		</item>
-		<item label="AssaultCube">
+		<item label="Xmahjongg">
 			<action name="Execute">
-				<command>
-					assaultcube
-				</command>
-				<startupnotify>
-					<enabled>
-						yes
-					</enabled>
-				</startupnotify>
+				<execute>
+					/usr/bin/xmahjongg
+				</execute>
 			</action>
 		</item>
 	</menu>
