@@ -165,6 +165,13 @@
 				</execute>
 			</action>
 		</item>
+		<item label="DeVeDe">
+			<action name="Execute">
+				<execute>
+					/usr/bin/devede
+				</execute>
+			</action>
+		</item>
 		<item label="Exaile">
 			<action name="Execute">
 				<execute>
@@ -818,13 +825,6 @@
 				</execute>
 			</action>
 		</item>
-		<item label="Geany">
-			<action name="Execute">
-				<execute>
-					geany
-				</execute>
-			</action>
-		</item>
 		<item label="Thunar">
 			<action name="Execute">
 				<execute>
@@ -836,6 +836,13 @@
 			<action name="Execute">
 				<execute>
 					urxvt -e &quot;vim&quot;
+				</execute>
+			</action>
+		</item>
+		<item label="vlc">
+			<action name="Execute">
+				<execute>
+					/usr/bin/vlc
 				</execute>
 			</action>
 		</item>
