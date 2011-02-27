@@ -158,6 +158,13 @@
 				</execute>
 			</action>
 		</item>
+		<item label="Asunder">
+			<action name="Execute">
+				<execute>
+					/usr/bin/asunder
+				</execute>
+			</action>
+		</item>
 		<item label="Audacity">
 			<action name="Execute">
 				<execute>
