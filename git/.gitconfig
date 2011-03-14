@@ -9,7 +9,7 @@
 	st = status
 	unstage = reset HEAD --
 	last = log -1 HEAD
-	editor = nano
+	editor = /usr/bin/vim
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [color]
 	ui = auto
