@@ -46,7 +46,7 @@ TEXT
   ${color1}::${color}   Up: $alignr${upspeedf eth0} kb/s   ${color1}::${color}
   ${color1}::${color}   Arch: $alignr${if_match ${execi 1800 ((sudo pacman -Sy > /dev/null 2>&1) ; (pacman -Qu | wc -l))} == 0}${color2}up to date${color}${else}${color3}${execi 1800 (pacman -Qu | wc -l)} new packages${color}${endif}   ${color1}::${color}
 
-  ${color1}FILE SYSEM$color
+  ${color1}FILE SYSTEM$color
   ${color1}::${color}   Root:  $alignr ${fs_used_perc /}%  ${fs_bar 7 /}
   ${color1}::${color}   Home:  $alignr ${fs_used_perc /home/rob}%  ${fs_bar 7 /home/rob}
 
