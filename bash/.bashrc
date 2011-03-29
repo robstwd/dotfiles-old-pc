@@ -3,7 +3,7 @@
 [ -z "$PS1" ] && return
 
 # default apps
-EDITOR=nano
+EDITOR=vim
 export EDITOR
 
 # key bindings
