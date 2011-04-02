@@ -82,6 +82,13 @@
 		</item>
 	</menu>
 	<menu id="apps-term-menu" label="Terminals">
+		<item label="guake">
+			<action name="Execute">
+				<execute>
+					/usr/bin/guake
+				</execute>
+			</action>
+		</item>
 		<item label="irb">
 			<action name="Execute">
 				<execute>
