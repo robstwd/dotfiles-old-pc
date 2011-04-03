@@ -818,10 +818,31 @@
 		</item>
 	</menu>
 	<menu id="root-menu" label="Openbox 3">
-		<item label="Chrome">
+		<item label="chrome">
 			<action name="Execute">
 				<execute>
 					/usr/bin/chromium
+				</execute>
+			</action>
+		</item>
+		<item label="guake">
+			<action name="Execute">
+				<execute>
+					/usr/bin/guake
+				</execute>
+			</action>
+		</item>
+		<item label="leafpad">
+			<action name="Execute">
+				<execute>
+					leafpad
+				</execute>
+			</action>
+		</item>
+		<item label="thunar">
+			<action name="Execute">
+				<execute>
+					thunar
 				</execute>
 			</action>
 		</item>
@@ -829,20 +850,6 @@
 			<action name="Execute">
 				<execute>
 					urxvt
-				</execute>
-			</action>
-		</item>
-		<item label="Leafpad">
-			<action name="Execute">
-				<execute>
-					leafpad
-				</execute>
-			</action>
-		</item>
-		<item label="Thunar">
-			<action name="Execute">
-				<execute>
-					thunar
 				</execute>
 			</action>
 		</item>
