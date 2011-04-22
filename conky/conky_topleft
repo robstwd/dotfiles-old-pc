@@ -60,7 +60,7 @@ TEXT
   ${color1}::${color}   Used: $alignr${execi 300 cat /home/rob/scripts/outputs/InternodeScrape/node-percent.txt}%  ${execibar 300 cat /home/rob/scripts/outputs/InternodeScrape/node-graph.txt}
   ${color1}::${color}   Period: $alignr${execi 300 cat /home/rob/scripts/outputs/InternodeScrape/iPeriodPercentage.txt}%  ${execibar 300 cat /home/rob/scripts/outputs/InternodeScrape/iPeriodPercentage.txt}
   ${color1}::${color}   Downloaded today: $alignr ${execi 300 cat /home/rob/scripts/outputs/InternodeScrape/downloadToday.txt} MB   ${color1}::${color}
-  ${color1}::${color}   Downl. this period:$alignr${execi 300 cat /home/rob/scripts/outputs/InternodeScrape/node-used-formatted.txt} MB (of ${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/quota_formatted})   ${color1}::${color}
+  ${color1}::${color}   Downl. this period:$alignr${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/accum_download_formatted} (of ${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/quota_formatted})   ${color1}::${color}
   ${color1}::${color}   Period rem.: $alignr ${execi 300 cat /home/rob/scripts/outputs/InternodeScrape/iDaysRem.txt}   ${color1}::${color}
   ${color1}::${color}   Last day: $alignr ${execi 300 cat /home/rob/scripts/outputs/InternodeScrape/node-date-formatted.txt}   ${color1}::${color}
   ${color1}::${color}   Ave daily usage this period: $alignr ${execi 300 cat /home/rob/scripts/outputs/InternodeScrape/node-avdayuse.txt} MB   ${color1}::${color}
