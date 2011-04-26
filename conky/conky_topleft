@@ -58,7 +58,7 @@ TEXT
 
   ${color1}INTERNODE${color}
   ${color1}::${color}   Used: $alignr${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/percentage_used}%  ${execibar 300 cat /home/rob/scripts/Projects/stinky/outputs/percentage_used}
-  ${color1}::${color}   Period: $alignr${execi 300 cat /home/rob/scripts/outputs/InternodeScrape/iPeriodPercentage.txt}%  ${execibar 300 cat /home/rob/scripts/outputs/InternodeScrape/iPeriodPercentage.txt}
+  ${color1}::${color}   Period: $alignr${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/period_percentage}%  ${execibar 300 cat /home/rob/scripts/Projects/stinky/outputs/period_percentage}
   ${color1}::${color}   Downloaded today: $alignr ${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/download_today_formatted}   ${color1}::${color}
   ${color1}::${color}   Downl. this period:$alignr${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/accum_download_formatted} (of ${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/quota_formatted})   ${color1}::${color}
   ${color1}::${color}   Period rem.: $alignr ${execi 300 cat /home/rob/scripts/outputs/InternodeScrape/iDaysRem.txt}   ${color1}::${color}
