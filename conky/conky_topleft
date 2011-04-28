@@ -64,7 +64,7 @@ TEXT
   ${color1}::${color}   Period rem.: $alignr ${execi 300 cat /home/rob/scripts/outputs/InternodeScrape/iDaysRem.txt}   ${color1}::${color}
   ${color1}::${color}   Last day of period: $alignr ${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/last_day}   ${color1}::${color}
   ${color1}::${color}   Ave daily usage this period: $alignr ${execi 300 cat /home/rob/scripts/outputs/InternodeScrape/node-avdayuse.txt} MB   ${color1}::${color}
-  ${color1}::${color}   Ave daily allowance per quota: $alignr ${execi 300 cat /home/rob/scripts/outputs/InternodeScrape/node-avdayquota.txt} MB   ${color1}::${color}
+  ${color1}::${color}   Ave daily allowance per quota: $alignr ${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/daily_allowance}   ${color1}::${color}
   ${color1}::${color}   Current Internode advisories: $alignr  ${execi 300 cat /home/rob/scripts/outputs/InternodeAdvisories/numberofadvisories.txt}   ${color1}::${color}
 
 #  ${color1}NETWORK STATUS$color
