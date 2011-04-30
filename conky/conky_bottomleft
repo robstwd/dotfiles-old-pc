@@ -1,0 +1,38 @@
+double_buffer yes
+
+background yes
+own_window yes
+own_window_transparent yes
+
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+draw_borders no
+draw_shades no
+
+gap_x 5
+gap_y 0
+alignment bottom_left
+
+update_interval 1.0
+default_color white
+
+use_xft yes
+xftfont Sans:size=9
+use_spacer none
+
+minimum_size 250 10
+
+override_utf8_locale yes
+
+color1 00ffff
+color2 00ff00
+color3 ffff00
+color4 ff0000
+
+TEXT
+
+  ${color1}GIT REPOS${color}
+  ${color1}::${color}   stinky $alignr L: ${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/stinky}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/stinky}${color}${else}${color4}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/stinky}${color}${endif}  R: ${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status_remote.rb ~/scripts/Projects/stinky}" == "up-to-date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status_remote.rb ~/scripts/Projects/stinky}${color}${else}${color4}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status_remote.rb ~/scripts/Projects/stinky}${color}${endif}    ${color1}::${color}
+  ${color1}::${color}   dotfiles $alignr L: ${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/dotfiles}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${color}${else}${color4}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${color}${endif}  R: ${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status_remote.rb ~/scripts/Projects/dotfiles}" == "up-to-date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status_remote.rb ~/scripts/Projects/dotfiles}${color}${else}${color4}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status_remote.rb ~/scripts/Projects/dotfiles}${color}${endif}    ${color1}::${color}
+  ${color1}::${color}   git_status $alignr L: ${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${else}${color4}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${endif}  R: ${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status_remote.rb ~/scripts/Projects/git_status}" == "up-to-date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status_remote.rb ~/scripts/Projects/git_status}${color}${else}${color4}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status_remote.rb ~/scripts/Projects/git_status}${color}${endif}    ${color1}::${color}
