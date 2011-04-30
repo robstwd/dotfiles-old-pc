@@ -691,6 +691,13 @@
 				</item>
 			</menu>
 			<menu id="system-menu-86715-671154" label="conky">
+				<item label="conky__bottomleft">
+					<action name="Execute">
+						<execute>
+							/usr/bin/geany /home/rob/.config/conky/conky_bottomleft
+						</execute>
+					</action>
+				</item>
 				<item label="conky__topleft">
 					<action name="Execute">
 						<execute>
