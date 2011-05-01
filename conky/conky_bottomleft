@@ -11,7 +11,7 @@ draw_borders no
 draw_shades no
 
 gap_x 5
-gap_y 0
+gap_y 45
 alignment bottom_left
 
 update_interval 1.0
