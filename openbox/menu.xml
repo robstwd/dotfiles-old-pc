@@ -516,6 +516,13 @@
 		</menu>
 	</menu>
 	<menu id="apps-graphics-menu" label="Graphics">
+		<item label="Hugin">
+			<action name="Execute">
+				<execute>
+					/usr/bin/hugin
+				</execute>
+			</action>
+		</item>
 		<item label="Gimp">
 			<action name="Execute">
 				<execute>
