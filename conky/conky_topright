@@ -1,0 +1,49 @@
+double_buffer yes
+
+background yes
+own_window yes
+own_window_transparent yes
+
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+draw_borders no
+draw_shades no
+
+gap_x 5
+gap_y 5
+alignment top_right
+
+update_interval 1.0
+default_color white
+
+use_xft yes
+xftfont Sans:size=9
+use_spacer none
+
+minimum_size 250 300
+#maximum_width 320
+
+default_bar_size 200 7
+
+override_utf8_locale yes
+
+color1 00ffff
+color2 00ff00
+color3 ffff00
+color4 ff0000
+
+TEXT 
+  ${color1}NETWORK STATUS$color
+  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.11" "Laptop x.11"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.11 "up" "down"}${if_existing /home/rob/.status/192.168.1.11.up}${color green}+++$else${color red}---$endif   ${color1}::${color}  
+  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.13" "Kid's PC x.13"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.13 "up" "down"}${if_existing /home/rob/.status/192.168.1.13.up}${color green}+++$else${color red}---$endif   ${color1}::${color}  
+  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.15" "Maddi's laptop x.15"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.15 "up" "down"}${if_existing /home/rob/.status/192.168.1.15.up}${color green}+++$else${color red}---$endif   ${color1}::${color}  
+  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.20" "Rob's iPod x.20"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.20 "up" "down"}${if_existing /home/rob/.status/192.168.1.20.up}${color green}+++$else${color red}---$endif   ${color1}::${color}  
+  ${color1}::${color} $alignr ${color1}::${color}  
+  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.50" "Belkin AP"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.50 "up" "down"}${if_existing /home/rob/.status/192.168.1.50.up}${color green}+++$else${color red}---$endif   ${color1}::${color}  
+  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "192.168.1.254" "Billion Router"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 192.168.1.254 "up" "down"}${if_existing /home/rob/.status/192.168.1.254.up}${color green}+++$else${color red}---$endif   ${color1}::${color}  
+  ${color1}::${color} $alignr ${color1}::${color}  
+  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "150.101.180.24" "Internode"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 150.101.180.24 "up" "down"}${if_existing /home/rob/.status/150.101.180.24.up}${color green}+++$else${color red}---$endif   ${color1}::${color}  
+  ${color1}::${color}   ${execpi 10 /home/rob/scripts/cronjobs/silentping3.sh "74.125.237.20" "Google"} $alignr ${texeci 10 /home/rob/scripts/cronjobs/silentping2.sh 74.125.237.20 "up" "down"}${if_existing /home/rob/.status/74.125.237.20.up}${color green}+++$else${color red}---$endif   ${color1}::${color}  
+
+
