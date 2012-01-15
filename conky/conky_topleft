@@ -49,6 +49,8 @@ TEXT
   ${color1}FILE SYSTEM$color
   ${color1}::${color}   Root:  $alignr ${fs_used_perc /}%  ${fs_bar 7 /}
   ${color1}::${color}   Home:  $alignr ${fs_used_perc /home/rob}%  ${fs_bar 7 /home/rob}
+  ${color1}::${color}   /var/cache/pacman: $alignr ${execp du -sh /var/cache/pacman/ | awk '{print $1}'}
+  ${color1}::${color}   Music HD: $alignr ${if_mounted /media/HD-PNTU3} ${fs_used_perc //media/HD-PNTU3/}%  ${fs_bar 7 /media/HD-PNTU3/}${else}${color red}Not Mounted$color${endif}
 # 
 #   ${color1}GIT REPOS${color}
 #   ${color1}::${color}   stinky $alignr L: ${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/stinky}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/stinky}${color}${else}${color4}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/stinky}${color}${endif}  R: ${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status_remote.rb ~/scripts/Projects/stinky}" == "up-to-date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status_remote.rb ~/scripts/Projects/stinky}${color}${else}${color4}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status_remote.rb ~/scripts/Projects/stinky}${color}${endif}    ${color1}::${color}
