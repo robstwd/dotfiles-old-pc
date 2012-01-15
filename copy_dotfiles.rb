@@ -18,6 +18,7 @@ path = "/home/rob/.config/conky/"
 conkyfiles << "#{path}conky_topleft"
 conkyfiles << "#{path}scripts/ConkyStartup.sh"
 conkyfiles << "#{path}conky_bottomleft"
+conkyfiles << "#{path}conky_topright"
 FileUtils.cp(conkyfiles, "#{dest}conky/")
 
 # bash
