@@ -179,10 +179,24 @@
 				</execute>
 			</action>
 		</item>
+		<item label="Brasero">
+			<action name="Execute">
+				<execute>
+					/usr/bin/brasero
+				</execute>
+			</action>
+		</item>
 		<item label="DeVeDe">
 			<action name="Execute">
 				<execute>
 					/usr/bin/devede
+				</execute>
+			</action>
+		</item>
+		<item label="Easytag">
+			<action name="Execute">
+				<execute>
+					/usr/bin/easytag
 				</execute>
 			</action>
 		</item>
@@ -245,41 +259,10 @@
 		</item>
 	</menu>
 	<menu id="apps-fileman-menu" label="Games">
-		<item label="AssaultCube">
-			<action name="Execute">
-				<command>
-					assaultcube
-				</command>
-				<startupnotify>
-					<enabled>
-						yes
-					</enabled>
-				</startupnotify>
-			</action>
-		</item>
-		<item label="Hedgewars">
+		<item label="Aisleriot ">
 			<action name="Execute">
 				<execute>
-					/usr/bin/hedgewars
-				</execute>
-			</action>
-		</item>
-		<item label="Sauerbraten">
-			<action name="Execute">
-				<command>
-					/usr/bin/sauerbraten-client
-				</command>
-				<startupnotify>
-					<enabled>
-						yes
-					</enabled>
-				</startupnotify>
-			</action>
-		</item>
-		<item label="Xmahjongg">
-			<action name="Execute">
-				<execute>
-					/usr/bin/xmahjongg
+					/usr/bin/sol
 				</execute>
 			</action>
 		</item>
@@ -514,8 +497,34 @@
 				</action>
 			</item>
 		</menu>
+		<item label="Sauerbraten">
+			<action name="Execute">
+				<command>
+					/usr/bin/sauerbraten-client
+				</command>
+				<startupnotify>
+					<enabled>
+						yes
+					</enabled>
+				</startupnotify>
+			</action>
+		</item>
+		<item label="Xmahjongg">
+			<action name="Execute">
+				<execute>
+					/usr/bin/xmahjongg
+				</execute>
+			</action>
+		</item>
 	</menu>
 	<menu id="apps-graphics-menu" label="Graphics">
+		<item label="digikam">
+			<action name="Execute">
+				<execute>
+					/usr/bin/digikam
+				</execute>
+			</action>
+		</item>
 		<item label="Hugin">
 			<action name="Execute">
 				<execute>
@@ -836,6 +845,13 @@
 			<action name="Execute">
 				<execute>
 					/usr/bin/chromium
+				</execute>
+			</action>
+		</item>
+		<item label="firefox">
+			<action name="Execute">
+				<execute>
+					/usr/bin/firefox
 				</execute>
 			</action>
 		</item>
