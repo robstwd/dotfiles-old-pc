@@ -236,6 +236,20 @@
 				</execute>
 			</action>
 		</item>
+		<item label="Rhythmbox">
+			<action name="Execute">
+				<execute>
+					/usr/bin/rhythmbox
+				</execute>
+			</action>
+		</item>
+		<item label="Solfege">
+			<action name="Execute">
+				<execute>
+					/usr/bin/solfege
+				</execute>
+			</action>
+		</item>
 		<item label="VLC">
 			<action name="Execute">
 				<execute>
