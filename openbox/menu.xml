@@ -574,6 +574,36 @@
 				</execute>
 			</action>
 		</item>
+		<menu id="apps-graphics-menu-74158" label="Screendumps">
+			<item label="screendump__kidspc">
+				<action name="Execute">
+					<execute>
+						/usr/bin/ruby /home/rob/scripts/manualScripts/screendumpkidspc.rb
+					</execute>
+				</action>
+			</item>
+			<item label="screendump__laptop">
+				<action name="Execute">
+					<execute>
+						/usr/bin/ruby /home/rob/scripts/manualScripts/screendumplaptop.rb
+					</execute>
+				</action>
+			</item>
+			<item label="screendump__entireScreen">
+				<action name="Execute">
+					<execute>
+						/usr/bin/ruby /home/rob/scripts/manualScripts/screendump_entire.rb
+					</execute>
+				</action>
+			</item>
+			<item label="screendump__select">
+				<action name="Execute">
+					<execute>
+						/usr/bin/ruby /home/rob/scripts/manualScripts/screendump_select.rb
+					</execute>
+				</action>
+			</item>
+		</menu>
 		<item label="Shotwell">
 			<action name="Execute">
 				<execute>
