@@ -214,21 +214,6 @@
 				</execute>
 			</action>
 		</item>
-		<item label="MPlayer">
-			<action name="Execute">
-				<command>
-					gmplayer
-				</command>
-				<startupnotify>
-					<enabled>
-						yes
-					</enabled>
-					<wmclass>
-						MPlayer
-					</wmclass>
-				</startupnotify>
-			</action>
-		</item>
 		<item label="python-iview">
 			<action name="Execute">
 				<execute>
@@ -892,6 +877,7 @@
 		</item>
 	</menu>
 	<menu id="root-menu" label="Openbox 3">
+		<menu execute="/home/rob/scripts/openbox/ob_pipemenu_ping1.sh 192.168.1.254 router" id="pipe-541035" label="Test pipe"/>
 		<item label="chrome">
 			<action name="Execute">
 				<execute>
