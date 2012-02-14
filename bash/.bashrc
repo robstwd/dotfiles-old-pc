@@ -12,6 +12,8 @@ bind '"\t":menu-complete'
 
 # aliases
 alias ls='ls --color=auto'
+
+# git aliases
 alias gs='git status'
 alias ga='git add'
 alias gd='git diff'
@@ -19,6 +21,9 @@ alias gc='git commit'
 alias gp='git push'
 alias gg='git gui'
 #~ alias glog='git log -1 HEAD'
+
+# cucumber aliases
+alias cuc='cucumber'
 
 # Pacman alias examples
 alias pacupg='sudo pacman -Syu'        				 # Synchronize with repositories before upgrading packages that are out of date on the local system.
