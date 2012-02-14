@@ -61,10 +61,12 @@ TEXT
   ${color1}INTERNODE${color}
   ${color1}::${color}   Used: $alignr${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/percentage_used}%  ${execibar 300 cat /home/rob/scripts/Projects/stinky/outputs/percentage_used}
   ${color1}::${color}   Period: $alignr${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/period_percentage}%  ${execibar 300 cat /home/rob/scripts/Projects/stinky/outputs/period_percentage}
+
   ${color1}::${color}   Downloaded today: $alignr ${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/download_today_formatted}   ${color1}::${color}
   ${color1}::${color}   Downl. this period:$alignr${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/accum_download_formatted} (of ${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/quota_formatted})   ${color1}::${color}
   ${color1}::${color}   Period remaining: $alignr ${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/duration_remaining}   ${color1}::${color}
   ${color1}::${color}   Last day of period: $alignr ${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/last_day}   ${color1}::${color}
+
   ${color1}::${color}   Ave daily usage, last 30 days: $alignr ${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/ave_daily_usage}   ${color1}::${color}
   ${color1}::${color}   Ave daily allowance per quota: $alignr ${execi 300 cat /home/rob/scripts/Projects/stinky/outputs/daily_allowance}   ${color1}::${color}
   ${color1}::${color}   Current Internode advisories: $alignr  ${execi 300 cat /home/rob/scripts/outputs/InternodeAdvisories/numberofadvisories.txt}   ${color1}::${color}
