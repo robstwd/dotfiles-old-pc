@@ -877,7 +877,6 @@
 		</item>
 	</menu>
 	<menu id="root-menu" label="Openbox 3">
-		<menu execute="/home/rob/scripts/openbox/ob_pipemenu_ping1.sh 192.168.1.254 router" id="pipe-541035" label="Test pipe"/>
 		<item label="chrome">
 			<action name="Execute">
 				<execute>
