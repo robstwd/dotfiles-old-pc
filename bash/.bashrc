@@ -20,6 +20,8 @@ alias gd='git diff'
 alias gc='git commit'
 alias gp='git push'
 alias gg='git gui'
+alias gb='git branch'
+alias go='git checkout'
 #~ alias glog='git log -1 HEAD'
 
 # cucumber aliases
