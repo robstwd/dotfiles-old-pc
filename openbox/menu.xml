@@ -877,6 +877,13 @@
 		</item>
 	</menu>
 	<menu id="root-menu" label="Openbox 3">
+		<item label="motion">
+			<action name="Execute">
+				<execute>
+					urxvt -e &quot;/home/rob/scripts/manualScripts/run_motion.sh&quot;
+				</execute>
+			</action>
+		</item>
 		<item label="chrome">
 			<action name="Execute">
 				<execute>
