@@ -508,6 +508,13 @@
 				</startupnotify>
 			</action>
 		</item>
+		<item label="Xonotic">
+			<action name="Execute">
+				<execute>
+					/usr/bin/xonotic-glx
+				</execute>
+			</action>
+		</item>
 		<item label="Xmahjongg">
 			<action name="Execute">
 				<execute>
