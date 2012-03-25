@@ -207,10 +207,24 @@
 				</execute>
 			</action>
 		</item>
+		<item label="Handbrake">
+			<action name="Execute">
+				<execute>
+					/usr/bin/ghb
+				</execute>
+			</action>
+		</item>
 		<item label="mp3splt">
 			<action name="Execute">
 				<execute>
 					/usr/bin/mp3splt-gtk
+				</execute>
+			</action>
+		</item>
+		<item label="ogmrip">
+			<action name="Execute">
+				<execute>
+					/usr/bin/ogmrip
 				</execute>
 			</action>
 		</item>
