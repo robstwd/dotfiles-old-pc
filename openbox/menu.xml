@@ -661,6 +661,13 @@
 					</execute>
 				</action>
 			</item>
+			<item label="xfce4-notifyd config">
+				<action name="Execute">
+					<execute>
+						/usr/bin/xfce4-notifyd-config
+					</execute>
+				</action>
+			</item>
 			<menu id="system-menu-86715-741456" label="Arch">
 				<item label="fstab (ro)">
 					<action name="Execute">
