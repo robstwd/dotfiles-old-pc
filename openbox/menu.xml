@@ -221,13 +221,6 @@
 				</execute>
 			</action>
 		</item>
-		<item label="ogmrip">
-			<action name="Execute">
-				<execute>
-					/usr/bin/ogmrip
-				</execute>
-			</action>
-		</item>
 		<item label="python-iview">
 			<action name="Execute">
 				<execute>
