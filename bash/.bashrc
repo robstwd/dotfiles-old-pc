@@ -17,6 +17,7 @@ alias ls='ls --color=auto'
 alias gs='git status'
 alias ga='git add'
 alias gd='git diff'
+alias gdc='git diff --cached'
 alias gc='git commit'
 alias gp='git push'
 alias gg='git gui'
@@ -26,6 +27,9 @@ alias go='git checkout'
 
 # cucumber aliases
 alias cuc='cucumber'
+
+# RSpec aliases
+alias rs='rspec'
 
 # Pacman alias examples
 alias pacupg='sudo pacman -Syu'        				 # Synchronize with repositories before upgrading packages that are out of date on the local system.
