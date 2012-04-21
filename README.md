@@ -49,3 +49,7 @@ The following files are tracked via git.
 11. vim files (found at `~/`)
     * `.vimrc`
     * files in `~/.vim/` subdirectories
+12. motion config files (found at `~/.motion/`)
+    * `motion.conf`
+    * `thread1.conf`    
+    * `thread2.conf`    
