@@ -96,6 +96,11 @@
 				</execute>
 			</action>
 		</item>
+		<item label="terminator">
+			<action name="Execute">
+				<execute>/usr/bin/terminator</execute>
+			</action>
+		</item>
 		<item label="urxvt">
 			<action name="Execute">
 				<execute>
@@ -154,6 +159,16 @@
 				<execute>
 					/usr/bin/gnucash
 				</execute>
+			</action>
+		</item>
+		<item label="LibreOffice Calc">
+			<action name="Execute">
+				<execute>/usr/bin/libreoffice --calc</execute>
+			</action>
+		</item>
+		<item label="LibreOffice Writer">
+			<action name="Execute">
+				<execute>/usr/bin/libreoffice --writer</execute>
 			</action>
 		</item>
 	</menu>
@@ -531,6 +546,11 @@
 		</item>
 	</menu>
 	<menu id="apps-graphics-menu" label="Graphics">
+		<item label="darktable">
+			<action name="Execute">
+				<execute>/usr/bin/darktable</execute>
+			</action>
+		</item>
 		<item label="digikam">
 			<action name="Execute">
 				<execute>
