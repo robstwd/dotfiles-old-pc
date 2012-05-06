@@ -56,7 +56,7 @@ thunar --daemon &
 
 #conky system monitor
 #~ conky -q &
-~/.config/conky/scripts/ConkyStartup.sh
+#~/.config/conky/scripts/ConkyStartup.sh
 
 # starting Xscreensaver
 xscreensaver -no-splash &
