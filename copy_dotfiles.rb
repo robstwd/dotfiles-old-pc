@@ -93,3 +93,8 @@ FileUtils.cp_r(vimfiles, "#{dest}vim/")
 # motion files
 motionfiles = Dir.glob("/home/rob/.motion/*")
 FileUtils.cp_r(motionfiles, "#{dest}motion/")
+
+# awesome files
+#
+awesomefiles = Dir.glob("/home/rob/.config/awesome/*")
+FileUtils.cp_r(awesomefiles, "#{dest}awesome/")
