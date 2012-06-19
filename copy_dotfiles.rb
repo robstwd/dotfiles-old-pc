@@ -8,7 +8,7 @@ dest = "/home/rob/scripts/Projects/dotfiles/"
 openboxfiles = []
 path = "/home/rob/.config/openbox/"
 openboxfiles << "#{path}menu.xml"
-openboxfiles << "#{path}autostart.sh"
+openboxfiles << "#{path}autostart"
 openboxfiles << "#{path}rc.xml" 
 FileUtils.cp(openboxfiles, "#{dest}openbox/")
 
