@@ -10,4 +10,10 @@
 # ...or the Window Manager of your choice
 # exec enlightenment_start
 # exec ck-launch-session openbox-session
-exec openbox-session
+# exec openbox-session
+
+DEFAULT_SESSION=openbox-session
+case $1 in
+  openbox-session|awesome|xmonad) exec $1 ;;
+  *) exec $DEFAULT_SESSION ;;
+esac
