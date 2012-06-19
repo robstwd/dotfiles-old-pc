@@ -60,3 +60,9 @@ thunar --daemon &
 
 # starting Xscreensaver
 xscreensaver -no-splash &
+
+# start volume icon
+volumeicon &
+
+# start lxpanel
+lxpanel &
