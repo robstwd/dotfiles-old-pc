@@ -34,7 +34,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+-- beautiful.init("/usr/share/awesome/themes/default/theme.lua") -- ORIGINAL
+beautiful.init(awful.util.getdir("config") .. "/themes/robs/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
@@ -66,12 +67,24 @@ layouts =
 }
 -- }}}
 
--- {{{ Tags
+-- {{{ Tags - ORIGINAL
+---- Define a tag table which hold all screen tags.
+--tags = {}
+--for s = 1, screen.count() do
+--    -- Each screen has its own tag table.
+--    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+--end
+---- }}}
+
+-- {{{ Tags NEW from the "my first awesome" wiki page
 -- Define a tag table which hold all screen tags.
-tags = {}
+tags = {
+  names  = { "main", 2, 3, 4, 5, 6, 7, 8, 9 },
+  layout = { layouts[1],  layouts[2], layouts[1], layouts[5], layouts[6], layouts[12], layouts[9], layouts[3], layouts[7]
+}}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag(tags.names, s, tags.layout)
 end
 -- }}}
 
@@ -80,11 +93,63 @@ end
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
+   -- { "lock", "xscreensaver-command --lock" },
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }
 
+myterminalmenu = {
+  { "urxvt", "urxvt" }, 
+  { "terminator", "terminator" }
+}
+
+myaccessorymenu = {
+  { "KeePassX", "keepassx" },
+  { "leafpad", "leafpad" },
+  { "meld", "meld" },
+  { "thunar", "thunar" }
+}
+
+myinternetmenu = {
+  { "chromium", "chromium" },
+  { "firefox", "firefox" }
+}
+
+myofficemenu = {
+  { "Libre calc", "libreoffice --calc" },
+  { "Libre writer", "libreoffice --writer" }
+}
+
+mymediamenu = {
+  { "alsamixer", terminal .. " -e alsamixer" },
+  { "asunder", "asunder" },
+  { "handbrake", "ghb" },
+  { "vlc", "vlc" }
+}
+
+mygamesmenu = {
+  { "aisleriot", "sol" },
+  { "sauerbraten", "sauerbraten-client" },
+  { "xmahjongg", "xmahjongg" },
+  { "xonotic", "xonotic-glx" }
+}
+
+mygraphicsmenu = {
+  { "darktable", "darktable" },
+  { "digikam", "digikam" },
+  { "hugin", "hugin" },
+  { "mirage", "mirage" },
+  { "nitrogen", "nitrogen" }
+}
+
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
+                                    { "terminals", myterminalmenu },
+                                    { "accessories", myaccessorymenu },
+                                    { "internet", myinternetmenu },
+                                    { "office", myofficemenu },
+                                    { "media", mymediamenu },
+                                    { "graphics", mygraphicsmenu },
+                                    { "games", mygamesmenu },
                                     { "open terminal", terminal }
                                   }
                         })
