@@ -6,6 +6,9 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
+-- Widget library
+-- local vicious = require("vicious")
+require("vicious")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -38,8 +41,9 @@ end
 beautiful.init(awful.util.getdir("config") .. "/themes/robs/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
-editor = os.getenv("EDITOR") or "nano"
+-- terminal = "xterm" ORIGINAL ENTRY
+terminal = "urxvt"
+editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -93,7 +97,7 @@ end
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
-   -- { "lock", "xscreensaver-command --lock" },
+   { "lock", "xscreensaver-command --lock" },
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }
@@ -107,6 +111,7 @@ myaccessorymenu = {
   { "KeePassX", "keepassx" },
   { "leafpad", "leafpad" },
   { "meld", "meld" },
+  { "motion", terminal .. " -e motion -s" },
   { "thunar", "thunar" }
 }
 
@@ -142,6 +147,11 @@ mygraphicsmenu = {
   { "nitrogen", "nitrogen" }
 }
 
+mypowermenu ={
+  { "reboot", "sudo shutdown -r now" },
+  { "shutdown", "sudo shutdown -h now" }
+}
+
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "terminals", myterminalmenu },
                                     { "accessories", myaccessorymenu },
@@ -150,6 +160,7 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                     { "media", mymediamenu },
                                     { "graphics", mygraphicsmenu },
                                     { "games", mygamesmenu },
+                                    { "power", mypowermenu },
                                     { "open terminal", terminal }
                                   }
                         })
@@ -165,8 +176,67 @@ mytextclock = awful.widget.textclock({ align = "right" })
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
+-- create a test icon widget
+-- myicon = widget({ type = "imagebox" })
+-- myicon.image = image(awful.util.getdir("config") .. "/myicon.png")
+
+-- and a test text widget
+-- mytextboxtest = widget({ type = "textbox" })
+-- mytextboxtest.text = "hoot"
+
+-- create a test graph widget
+-- mygraph = awful.widget.graph()
+-- mygraph:set_width(150)
+-- mygraph:set_background_color('#494B4F')
+-- mygraph:set_color('#FF5656')
+-- mygraph:set_gradient_colors({ '#FF5656', '#88A175', '#ARCF96' })
+-- mygraph:add_value(0.4)
+-- mygraph:add_value(0.8)
+    
+-- network usage widget
+-- initialise widget
+netwidget = widget({ type = "textbox" })
+-- register widget
+vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${eth0 down_kb}</span> <span color="#7F9F7F">${eth0 up_kb}</span>', 3)
+dnicon = widget({ type = "imagebox" })
+upicon = widget({ type = "imagebox" })
+dnicon.image = image(beautiful.widget_net)
+upicon.image = image(beautiful.widget_netup)
+
+-- Date widget
+-- datewidget = widget({ type = "textbox" })
+-- vicious.register(datewidget, vicious.widgets.date, "%b %d, %R")
+
+-- Memory widget
+memwidget = widget({ type = "textbox" })
+vicious.cache(vicious.widgets.mem)
+vicious.register(memwidget, vicious.widgets.mem, "$1% ($2MB/$3MB)", 13)
+
+-- uptime widget
+-- uptimewidget = widget({ type = "textbox" })
+-- vicious.register(uptimewidget, vicious.widgets.uptime, "$1d $2h $3m ($4, $5, $6)", 5)
+
+-- cpuwidget
+-- cpuwidget = awful.widget.graph()
+-- cpuwidget:set_width(50)
+-- cpuwidget:set_background_color("#494B4F")
+-- cpuwidget:set_color("#FF5656")
+-- cpuwidget:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
+-- vicious.register(cpuwidget, vicious.widgets.cpu, "$1", 3)
+-- cpuwidget = awful.widget.graph()
+-- cpuwidget:set_width(50)
+-- cpuwidget:set_background_color("#494B4F")
+-- cpuwidget:set_color("#FF5656")
+-- cpuwidget:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
+-- vicious.register(cpuwidget, vicious.widgets.cpu, "$1", 3)
+
+-- separator
+separator = widget({ type = "textbox" })
+separator.text = " :: "
+
 -- Create a wibox for each screen and add it
 mywibox = {}
+mywiboxbottom = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
@@ -241,10 +311,29 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
+        separator, upicon, netwidget, dnicon, separator,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
+
+    -- bottom wibox
+    mywiboxbottom[s] = awful.wibox({ position = "bottom", screen = s })
+    -- add widgets to the new wibox
+    mywiboxbottom[s].widgets = {
+      {
+        -- myicon,
+        -- mytextboxtest,
+        -- datewidget,
+        memwidget,
+        -- separator, uptimewidget,
+        -- cpuwidget,
+        -- netwidget,
+        --  mygraph,
+        layout = awful.widget.layout.horizontal.leftright
+      }
+    } 
+
 end
 -- }}}
 
@@ -398,7 +487,7 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
-    { rule = { class = "gimp" },
+    { rule = { class = "Gimp" },
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
@@ -436,3 +525,16 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- attempt to autostart apps; info from awesome arch wiki entry
+do
+  local cmds = 
+  {
+    -- "leafpad"
+    "xscreensaver -no-splash"
+  }
+
+  for _,i in pairs(cmds) do
+    awful.util.spawn(i)
+  end
+end
