@@ -12,8 +12,8 @@
 # exec ck-launch-session openbox-session
 # exec openbox-session
 
-DEFAULT_SESSION=openbox-session
+DEFAULT_SESSION=awesome
 case $1 in
-  openbox-session|awesome|xmonad) exec $1 ;;
+  awesome|openbox-session|xmonad) exec $1 ;;
   *) exec $DEFAULT_SESSION ;;
 esac
