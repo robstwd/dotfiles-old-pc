@@ -220,10 +220,31 @@ disk.addToWidget(diskwidget, 75, 90, false)
 -- datewidget = widget({ type = "textbox" })
 -- vicious.register(datewidget, vicious.widgets.date, "%b %d, %R")
 
--- Memory widget
+-- Memory widget (1)
 memwidget = widget({ type = "textbox" })
 vicious.cache(vicious.widgets.mem)
 vicious.register(memwidget, vicious.widgets.mem, "$1% ($2MB/$3MB)", 13)
+
+-- RAM usage widget (2)
+-- memwidget = awful.widget.progressbar()
+-- memwidget:set_width(15)
+-- memwidget:set_height(30)
+-- memwidget:set_vertical(true)
+-- memwidget:set_background_color('#494B4F')
+-- memwidget:set_color('#AECF96')
+-- memwidget:set_gradient_colors({ '#AECF96', '#88A175', '#FF5656' })
+-- memwidget:set_value(0.5)
+
+-- RAM usage tooltip
+-- memwidget_t = awful.tooltip({ objects = { memwidget.widget },})
+
+-- vicious.cache(vicious.widgets.mem)
+-- vicious.register(memwidget, vicious.widgets.mem,
+--                 function (widget, args)
+--                     memwidget_t:set_text(" RAM: " .. args[2] .. "MB / " .. args[3] .. "MB ")
+--                     return args[1]
+--                  end, 13)
+--                  --update every 13 seconds
 
 -- uptime widget
 -- uptimewidget = widget({ type = "textbox" })
@@ -340,7 +361,7 @@ for s = 1, screen.count() do
         mytextclock,
         separator, upicon, netwidget, dnicon, 
         separator, diskwidget,
-        -- separator, mygmail,
+        separator,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
@@ -358,7 +379,7 @@ for s = 1, screen.count() do
         -- separator, uptimewidget,
         -- cpuwidget,
         -- netwidget,
-        --  mygraph,
+        -- mygraph,
         layout = awful.widget.layout.horizontal.leftright
       }
     } 
