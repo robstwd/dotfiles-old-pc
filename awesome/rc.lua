@@ -203,6 +203,15 @@ upicon = widget({ type = "imagebox" })
 dnicon.image = image(beautiful.widget_net)
 upicon.image = image(beautiful.widget_netup)
 
+-- Disk usage widget
+diskwidget = widget({ type = 'imagebox' })
+diskwidget.image = image("/home/rob/.config/awesome/themes/robs/icons/du.png")
+disk = require("diskusage")
+-- the first argument is the widget to trigger the diskusage
+-- the second/third is the percentage at which a line gets orange/red
+-- true = show only local filesystems
+disk.addToWidget(diskwidget, 75, 90, false)
+
 -- Date widget
 -- datewidget = widget({ type = "textbox" })
 -- vicious.register(datewidget, vicious.widgets.date, "%b %d, %R")
@@ -311,7 +320,8 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
-        separator, upicon, netwidget, dnicon, separator,
+        separator, upicon, netwidget, dnicon, 
+        separator, diskwidget,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
