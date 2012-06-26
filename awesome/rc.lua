@@ -268,6 +268,25 @@ vicious.register(memwidget, vicious.widgets.mem, "$1% ($2MB/$3MB)", 13)
 separator = widget({ type = "textbox" })
 separator.text = " :: "
 
+-- test calling bash script to ouptput as tooltip
+-- script is /home/rob/scripts/test/git_status.sh
+function get_gitstatus()
+  --~ local fd = io.popen("/home/rob/scripts/test/git_status.sh")
+  local fd = io.popen("/usr/bin/ruby /home/rob/scripts/Projects/git_status/bin/get_git_status.rb /home/rob/scripts/Projects/motion_sorter")
+  local str = fd:read("*all")
+  return str
+end
+-- set up icon
+gsimg = widget({ type = "imagebox" })
+gsimg.image = image(awful.util.getdir("config") .. "/themes/robs/icons/test.png")
+-- set up tooltip
+gsimg_t = awful.tooltip({ objects = { gsimg },})
+-- mytimer = timer({ timeout = 3600 })
+-- mytimer:add_signal("timeout", function()
+-- gsimg_t:set_text(get_gitstatus()) end )
+-- mytimer:start()
+gsimg_t:set_text(get_gitstatus())
+
 -- gmail widget and tooltip
 -- mygmail = widget({ type = "textbox" })
 -- gmail_t = awful.tooltip({ objects = { mygmail },})
@@ -361,7 +380,7 @@ for s = 1, screen.count() do
         mytextclock,
         separator, upicon, netwidget, dnicon, 
         separator, diskwidget,
-        separator,
+        separator, gsimg,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
@@ -375,7 +394,8 @@ for s = 1, screen.count() do
         -- myicon,
         -- mytextboxtest,
         -- datewidget,
-        memwidget,
+        gsimg,
+        -- memwidget,
         -- separator, uptimewidget,
         -- cpuwidget,
         -- netwidget,
