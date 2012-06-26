@@ -173,6 +173,10 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
+-- Calendar widget to attach to the textclock
+require('calendar2')
+calendar2.addCalendarToWidget(mytextclock)
+
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
