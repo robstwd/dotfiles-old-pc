@@ -247,6 +247,20 @@ vicious.register(memwidget, vicious.widgets.mem, "$1% ($2MB/$3MB)", 13)
 separator = widget({ type = "textbox" })
 separator.text = " :: "
 
+-- gmail widget and tooltip
+-- mygmail = widget({ type = "textbox" })
+-- gmail_t = awful.tooltip({ objects = { mygmail },})
+-- mygmailimg = widget({ type = "imagebox" })
+-- mygmailimg.image = image("/home/rob/.config/awesome/themes/robs/icons/mail.png")
+
+-- vicious.register(mygmail, vicious.widgets.gmail,
+--                 function (widget, args)
+--                     gmail_t:set_text(args["{subject}"])
+--                     gmail_t:add_to_object(mygmailimg)
+--                     return args["{count}"]
+--                  end, 120) 
+--                 --the '120' here means check every 2 minutes.
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mywiboxbottom = {}
@@ -326,6 +340,7 @@ for s = 1, screen.count() do
         mytextclock,
         separator, upicon, netwidget, dnicon, 
         separator, diskwidget,
+        -- separator, mygmail,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
