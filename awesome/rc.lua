@@ -292,7 +292,10 @@ mytextboxgsdotfiles = widget({ type = "textbox" })
 mytextboxgsdotfiles.text = "dotfiles "
 -- text box for repo status
 mytextboxgs = widget({ type = "textbox" })
+-- mytimer = timer({ timeout = 5 })
+-- mytime:add_signal("timeout", mytextboxgs.text = get_gitstatus() )
 mytextboxgs.text = get_gitstatus()
+-- mytimer:start()
 
 -- gmail widget and tooltip
 -- mygmail = widget({ type = "textbox" })
