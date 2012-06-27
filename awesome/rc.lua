@@ -289,7 +289,7 @@ gsimg_t:set_text(get_gitstatus())
 -- git status for dotfiles widget
 -- text box for repo name
 mytextboxgsdotfiles = widget({ type = "textbox" })
-mytextboxgsdotfiles.text = "dotfiles>> "
+mytextboxgsdotfiles.text = "dotfiles "
 -- text box for repo status
 mytextboxgs = widget({ type = "textbox" })
 mytextboxgs.text = get_gitstatus()
