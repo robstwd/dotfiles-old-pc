@@ -286,6 +286,14 @@ gsimg_t = awful.tooltip({ objects = { gsimg },})
 -- mytimer:start()
 gsimg_t:set_text(get_gitstatus())
 
+-- git status for dotfiles widget
+-- text box for repo name
+mytextboxgsdotfiles = widget({ type = "textbox" })
+mytextboxgsdotfiles.text = "dotfiles>> "
+-- text box for repo status
+mytextboxgs = widget({ type = "textbox" })
+mytextboxgs.text = get_gitstatus()
+
 -- gmail widget and tooltip
 -- mygmail = widget({ type = "textbox" })
 -- gmail_t = awful.tooltip({ objects = { mygmail },})
@@ -380,6 +388,8 @@ for s = 1, screen.count() do
         separator, upicon, netwidget, dnicon, 
         separator, diskwidget,
         separator, gsimg,
+        separator, mytextboxgs, mytextboxgsdotfiles,
+        separator,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
@@ -393,7 +403,8 @@ for s = 1, screen.count() do
         -- myicon,
         -- mytextboxtest,
         -- datewidget,
-        gsimg,
+        -- gsimg,
+        mytextboxgsdotfiles,
         -- memwidget,
         -- separator, uptimewidget,
         -- cpuwidget,
