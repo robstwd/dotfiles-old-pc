@@ -280,11 +280,11 @@ gsimg = widget({ type = "imagebox" })
 gsimg.image = image(awful.util.getdir("config") .. "/themes/robs/icons/test.png")
 -- set up tooltip
 gsimg_t = awful.tooltip({ objects = { gsimg },})
--- mytimer = timer({ timeout = 3600 })
--- mytimer:add_signal("timeout", function()
--- gsimg_t:set_text(get_gitstatus()) end )
--- mytimer:start()
-gsimg_t:set_text(get_gitstatus())
+mytimer = timer({ timeout = 3 })
+mytimer:add_signal("timeout", function()
+gsimg_t:set_text(get_gitstatus()) end )
+mytimer:start()
+-- gsimg_t:set_text(get_gitstatus())
 
 -- git status for dotfiles widget
 -- text box for repo name
