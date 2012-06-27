@@ -271,8 +271,7 @@ separator.text = " :: "
 -- test calling bash script to ouptput as tooltip
 -- script is /home/rob/scripts/test/git_status.sh
 function get_gitstatus()
-  --~ local fd = io.popen("/home/rob/scripts/test/git_status.sh")
-  local fd = io.popen("/usr/bin/ruby /home/rob/scripts/Projects/git_status/bin/get_git_status.rb /home/rob/scripts/Projects/motion_sorter")
+  local fd = io.popen("/usr/bin/ruby /home/rob/scripts/Projects/git_status/bin/get_git_status.rb /home/rob/scripts/Projects/dotfiles")
   local str = fd:read("*all")
   return str
 end
