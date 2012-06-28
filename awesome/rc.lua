@@ -147,9 +147,13 @@ mygraphicsmenu = {
   { "nitrogen", "nitrogen" }
 }
 
-mypowermenu ={
+mypowermenu = {
   { "reboot", "sudo shutdown -r now" },
   { "shutdown", "sudo shutdown -h now" }
+}
+
+myscriptmenu = {
+  { "dotfiles", "ruby /home/rob/scripts/Projects/dotfiles/copy_dotfiles.rb" }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
@@ -161,6 +165,7 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                     { "graphics", mygraphicsmenu },
                                     { "games", mygamesmenu },
                                     { "power", mypowermenu },
+                                    { "scripts", myscriptmenu },
                                     { "open terminal", terminal }
                                   }
                         })
