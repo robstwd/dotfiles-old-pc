@@ -143,6 +143,7 @@ mygraphicsmenu = {
   { "darktable", "darktable" },
   { "digikam", "digikam" },
   { "hugin", "hugin" },
+  { "luminance", "luminance-hdr" },
   { "mirage", "mirage" },
   { "nitrogen", "nitrogen" }
 }
