@@ -17,7 +17,8 @@ local naughty = require("naughty")
 module("calendar2")
 
 local calendar = {}
-local current_day_format = "<u>%s</u>"
+-- local current_day_format = "<u>%s</u>"
+local current_day_format = "<span color='red'>%s</span>"
 
 function displayMonth(month,year,weekStart)
         local t,wkSt=os.time{year=year, month=month+1, day=0},weekStart or 1
