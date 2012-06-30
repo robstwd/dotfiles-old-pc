@@ -304,18 +304,57 @@ mytextboxgs.text = get_gitstatus()
 -- mytimer:start()
 
 -- gmail widget and tooltip
-mygmail = widget({ type = "textbox" })
-gmail_t = awful.tooltip({ objects = { mygmail },})
-mygmailimg = widget({ type = "imagebox" })
-mygmailimg.image = image("/home/rob/.config/awesome/themes/robs/icons/mail.png")
+-- mygmail = widget({ type = "textbox" })
+-- gmail_t = awful.tooltip({ objects = { mygmail },})
+-- mygmailimg = widget({ type = "imagebox" })
+-- mygmailimg.image = image("/home/rob/.config/awesome/themes/robs/icons/mail.png")
 
-vicious.register(mygmail, vicious.widgets.gmail,
-                function (widget, args)
-                    gmail_t:set_text(args["{subject}"])
-                    gmail_t:add_to_object(mygmailimg)
-                    return args["{count}"]
-                 end, 120) 
-                --the '120' here means check every 2 minutes.
+-- Pacman Widget
+-- pacwidget = widget({type = "textbox"})
+-- pacwidget_t = awful.tooltip({ objects = { pacwidget},})
+-- vicious.register(pacwidget, vicious.widgets.pkg,
+--                function(widget,args)
+--                     local io = { popen = io.popen }
+--                     local s = io.popen("pacman -Qu")
+--                     local str = ''
+--
+--                     for line in s:lines() do
+--                         str = str .. line .. "\n"
+--                     end
+--                     pacwidget_t:set_text(str)
+--                    s:close()
+--                     return "UPDATES: " .. args[1]
+--                 end, 1800, "Arch")
+
+                --'1800' means check every 30 minutes
+
+-- vicious.register(mygmail, vicious.widgets.gmail,
+--                 function (widget, args)
+--                     gmail_t:set_text(args["{subject}"])
+--                     gmail_t:add_to_object(mygmailimg)
+--                     return args["{count}"]
+--                  end, 120) 
+--                 --the '120' here means check every 2 minutes.
+
+-- RAM usage widget
+-- memwidget = awful.widget.progressbar()
+-- memwidget:set_width(15)
+-- memwidget:set_height(30)
+-- memwidget:set_vertical(true)
+-- memwidget:set_background_color('#494B4F')
+-- memwidget:set_color('#AECF96')
+-- memwidget:set_gradient_colors({ '#AECF96', '#88A175', '#FF5656' })
+
+-- RAM usage tooltip
+-- memwidget_t = awful.tooltip({ objects = { memwidget.widget },})
+
+-- vicious.cache(vicious.widgets.mem)
+-- vicious.register(memwidget, vicious.widgets.mem,
+--                function (widget, args)
+--                    memwidget_t:set_text(" RAM: " .. args[2] .. "MB / " .. args[3] .. "MB ")
+--                    return args[1]
+--                 end, 13)
+--                 --update every 13 seconds
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -398,7 +437,9 @@ for s = 1, screen.count() do
         separator, diskwidget,
         separator, gsimg,
         separator, mytextboxgs, mytextboxgsdotfiles,
-        separator, mygmail, mygmailimg,
+        -- separator, mygmail, mygmailimg,
+        -- separator, pacwidget,
+        -- separator, memwidget.widget,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
@@ -413,7 +454,7 @@ for s = 1, screen.count() do
         -- mytextboxtest,
         -- datewidget,
         -- gsimg,
-        mytextboxgsdotfiles,
+        -- mytextboxgsdotfiles, 
         -- memwidget,
         -- separator, uptimewidget,
         -- cpuwidget,
