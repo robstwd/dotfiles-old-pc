@@ -10,6 +10,14 @@ require("naughty")
 -- local vicious = require("vicious")
 require("vicious")
 
+-- colors
+blue 	= "#426797"
+white = "#ffffff"
+black = "#0a0a0b"
+red 	= "#ea3da3"
+green = "#16a712"
+grey 	= "#6d7c80"
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -357,6 +365,15 @@ mytextboxgs.text = get_gitstatus()
 --                 end, 13)
 --                 --update every 13 seconds
 
+-- test tooltip
+testimg = widget({ type = "imagebox" })
+testimg.image = image(awful.util.getdir("config") .. "/themes/robs/icons/test.png")
+testimg_t = awful.tooltip({ objects = { testimg },})
+testimg:add_signal("mouse::enter", function()
+		testimg_t:set_text(
+		"<span color='" .. white .. "'> dotfiles:</span> <span color='" .. black .. "'>\t" .. get_gitstatus() .. "</span> \n")
+end)
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mywiboxbottom = {}
@@ -457,6 +474,7 @@ for s = 1, screen.count() do
         -- gsimg,
         -- mytextboxgsdotfiles, 
         -- memwidget,
+        testimg,
         -- separator, uptimewidget,
         -- cpuwidget,
         -- netwidget,
