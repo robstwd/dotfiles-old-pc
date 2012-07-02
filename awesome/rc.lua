@@ -154,7 +154,8 @@ mypowermenu = {
 }
 
 myscriptmenu = {
-  { "dotfiles", "ruby /home/rob/scripts/Projects/dotfiles/copy_dotfiles.rb" }
+  { "dotfiles", "ruby /home/rob/scripts/Projects/dotfiles/copy_dotfiles.rb" },
+  { "motion", "/home/rob/scripts/manualScripts/run_motion2.sh" }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
