@@ -119,7 +119,7 @@ myaccessorymenu = {
   { "KeePassX", "keepassx" },
   { "leafpad", "leafpad" },
   { "meld", "meld" },
-  { "motion", terminal .. " -e motion -s" },
+  { "speedcrunch", "speedcrunch" },
   { "thunar", "thunar" }
 }
 
