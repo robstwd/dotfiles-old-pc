@@ -91,7 +91,7 @@ layouts =
 -- {{{ Tags NEW from the "my first awesome" wiki page
 -- Define a tag table which hold all screen tags.
 tags = {
-  names  = { "main", 2, 3, 4, 5, 6, 7, 8, 9 },
+  names  = { 1, 2, 3, 4, 5, 6, 7, 8, 9 },
   layout = { layouts[1],  layouts[2], layouts[1], layouts[5], layouts[6], layouts[12], layouts[9], layouts[3], layouts[7]
 }}
 for s = 1, screen.count() do
@@ -150,6 +150,7 @@ mygamesmenu = {
 mygraphicsmenu = {
   { "darktable", "darktable" },
   { "digikam", "digikam" },
+  { "gimp", "gimp" },
   { "hugin", "hugin" },
   { "luminance", "luminance-hdr" },
   { "mirage", "mirage" },
