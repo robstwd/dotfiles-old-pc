@@ -14,6 +14,6 @@
 
 DEFAULT_SESSION=awesome
 case $1 in
-  awesome|openbox-session|dwm) exec $1 ;;
+  awesome|openbox-session|dwm|xbmc) exec $1 ;;
   *) exec $DEFAULT_SESSION ;;
 esac
