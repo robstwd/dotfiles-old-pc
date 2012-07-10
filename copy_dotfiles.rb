@@ -95,6 +95,9 @@ motionfiles = Dir.glob("/home/rob/.motion/*")
 FileUtils.cp_r(motionfiles, "#{dest}motion/")
 
 # awesome files
-#
 awesomefiles = Dir.glob("/home/rob/.config/awesome/*")
 FileUtils.cp_r(awesomefiles, "#{dest}awesome/")
+
+# dwm files
+dwmfiles = Dir.glob("/home/rob/dwm/*")
+FileUtils.cp_r(dwmfiles, "#{dest}dwm/")
