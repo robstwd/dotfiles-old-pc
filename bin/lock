@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# ~/bin/lock
+# invoke the screensaver lock
+
+xscreensaver-command --lock
