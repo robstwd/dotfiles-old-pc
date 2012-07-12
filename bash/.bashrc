@@ -12,6 +12,7 @@ bind '"\t":menu-complete'
 
 # aliases
 alias ls='ls --color=auto'
+alias lock='xscreensaver-command --lock'
 
 # git aliases
 alias gs='git status'
