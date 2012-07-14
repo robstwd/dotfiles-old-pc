@@ -8,5 +8,9 @@ update_interval 2
 total_run_times 0
 use_spacer none
 
+# versions
+#  |   cpu ${cpu cpu1}% - ${cpu cpu2}%   |   ram $memperc%  (${mem})   |   ${time %F %R}
+# git_status ruby : ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}
+ 
 TEXT
- |   cpu ${cpu cpu1}% - ${cpu cpu2}%   |   ram $memperc%  (${mem})   |   ${time %F %R}
+ |   dotfiles ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}   |   cpu ${cpu cpu1}% - ${cpu cpu2}%   |   ram $memperc%  (${mem})   |   ${time %F %R} 
