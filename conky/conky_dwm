@@ -9,4 +9,4 @@ total_run_times 0
 use_spacer none
 
 TEXT
-::   CPU ${cpu cpu1}% / ${cpu cpu2}%   ::   RAM $memperc%  (${mem})   ::   ${time %F %R}
+ |   cpu ${cpu cpu1}% - ${cpu cpu2}%   |   ram $memperc%  (${mem})   |   ${time %F %R}
