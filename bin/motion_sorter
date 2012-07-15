@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'motion_sorter'
+
+#a = MotionCollection::Files.new
+
+puts "::::::::::::::::::::::::::::::::::::"
+puts
+puts "Thank you for choosing to sort your Motion jpgs with motion_sorter!"
+puts
+#puts "::::::::::::::::::::::::::::::::::::"
+#file = "/home/rob/Videos/webcam/Motion/notes/03-20120228063046-00.jpg"
+#a = MotionSorter::MotionFile.new(file)
+#puts "Full path       = #{a.file_with_path}"
+#puts "  ::  Basename  = #{a.basename}"
+#puts "  ::  Date      = #{a.date}"
+#puts "  ::  Event no  = #{a.event_number}"
+
+path = ARGV[0]
+mfc = MotionSorter::FileCollector.new(path)
+#mfc = MotionSorter::FileCollector.new("#{Dir.pwd}/notes")
+mfc.collect_motion_files
+mfc.move_motion_files
+
+puts
