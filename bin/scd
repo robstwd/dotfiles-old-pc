@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+require 'time'
+timestamp    = Time.now.strftime("%Y%m%d-%H%M%S")
+outputfile   = "/home/rob/Pictures/screenshots/arch/screenshot-#{timestamp}.png"
+
+system = `import -window root #{outputfile}`
