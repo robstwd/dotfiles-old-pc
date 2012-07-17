@@ -1,0 +1,18 @@
+#!/bin/bash
+
+xscreensaver -no-splash &
+
+# set status bar text with date as such "2012-07-10 22:39"
+#~ while true; do
+  #~ xsetroot -name "$( date +"%F %R" )"
+  #~ sleep 1m				# update every minute
+#~ done &
+
+#~  conky variation
+conky -q -c ~/.config/conky/conky_dwm | while read -r; do xsetroot -name "$REPLY"; done &
+
+# to restore the last wallpaper used in nitrogen
+nitrogen --restore &
+
+#~ start dwm
+exec dwm
