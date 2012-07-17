@@ -103,6 +103,8 @@ puts "Copied #{vimfiles.length} vim files"
 
 # motion files
 motionfiles = Dir.glob("/home/rob/.motion/*")
+motionfiles << "/home/rob/scripts/Projects/motion_run/run_motion.sh"
+motionfiles << "/home/rob/scripts/Projects/motion_run/run_motion2.sh"
 FileUtils.cp_r(motionfiles, "#{dest}motion/")
 puts "Copied #{motionfiles.length} motion files"
 
@@ -112,11 +114,15 @@ FileUtils.cp_r(awesomefiles, "#{dest}awesome/")
 puts "Copied #{awesomefiles.length} awesome files"
 
 # dwm files
-dwmfiles = Dir.glob("/home/rob/dwm/*")
-#dwmfiles << "/usr/bin/dwm­-personalised"
-#dwmfiles << "/usr/share/xsessions/dwm­-personalised.desktop"
-#FileUtils.cp_r(dwmfiles, "#{dest}dwm/")
-#puts "Copied #{dwmfiles.length} dwm files"
+path = "/home/rob/dwm/"
+dwmfiles = []
+dwmfiles << "#{path}config.h"
+#dwmfiles << "#{path}config.h"
+dwmfiles << "/usr/bin/dwm-personalised"
+dwmfiles << "/usr/share/xsessions/dwm-personalised.desktop"
+#dwmfiles << "/usr/share/xsessions/dwm­personalised.desktop"
+FileUtils.cp_r(dwmfiles, "#{dest}dwm/")
+puts "Copied #{dwmfiles.length} dwm files"
 
 # ~/bin files
 binfiles = Dir.glob("/home/rob/bin/*")
