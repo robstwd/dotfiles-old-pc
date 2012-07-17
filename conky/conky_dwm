@@ -1,4 +1,3 @@
-# /home/rob/.config/conky/conky_dwm
 # ~/.config/conky/conky_dwm
 
 out_to_console yes
@@ -13,4 +12,9 @@ use_spacer none
 # git_status ruby : ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}
  
 TEXT
- |   dotfiles ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}   |   cpu ${cpu cpu1}% - ${cpu cpu2}%   |   ram $memperc%  (${mem})   |   ${time %F %R} 
+ |   dotfiles ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}  \
+ |   cpu ${cpu cpu1}% - ${cpu cpu2}%   \
+ |   ram $memperc%  (${mem})   \
+ |   home ${fs_used_perc /home}%   \
+ |   $kernel   \
+ |   ${time %F %R} 
