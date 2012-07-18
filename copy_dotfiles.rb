@@ -128,3 +128,8 @@ puts "Copied #{dwmfiles.length} dwm files"
 binfiles = Dir.glob("/home/rob/bin/*")
 FileUtils.cp_r(binfiles, "#{dest}bin/")
 puts "Copied #{binfiles.length} bin files"
+
+# pam files
+pamfiles = Dir.glob("/etc/pam.d/*")
+FileUtils.cp_r(pamfiles, "#{dest}pam/")
+puts "Copied #{pamfiles.length} pam files"
