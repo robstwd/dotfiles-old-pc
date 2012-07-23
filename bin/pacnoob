@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+#~ FILE = "/home/rob/scripts/Projects/pacnoob/helpers/pacman2.log"
+FILE = "/var/log/pacman.log"
+
+class Pacnoob
+
+  def initialize
+    @arr = IO.readlines(FILE)
+  end
+  
+  def pacnew_count
+    count = 0
+    @arr.each do |line|
+      if line.include?(".pacnew") then
+        if !line.include?("[MERGED]")
+          count += 1
+        end
+      end
+    end
+    return count
+  end 
+  
+  #~ def pacnew_list
+    #~ @arr.each do |line| 
+      #~ if line.include?(".pacnew") then
+        #~ puts "line "line
+      #~ end
+    #~ end
+  #~ end
+    
+end
+
+
+a = Pacnoob.new
+puts a.pacnew_count
+#
