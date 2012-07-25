@@ -28,6 +28,7 @@ puts "Copied #{conkyfiles.length} conky files"
 bashfiles = []
 path = "/home/rob/"
 bashfiles << "#{path}.bashrc"
+bashfiles << "/etc/bash.bashrc"
 FileUtils.cp(bashfiles, "#{dest}bash/")
 puts "Copied #{bashfiles.length} bash files"
 
@@ -45,6 +46,8 @@ archfiles << "#{path}hosts.allow"
 archfiles << "#{path}locale.gen"
 archfiles << "#{path}pacman.conf"
 archfiles << "#{path}pacman.d/mirrorlist"
+#archfiles << "#{path}gshadow"
+archfiles << "#{path}group"
 archfiles << "/home/rob/.xinitrc"
 FileUtils.cp(archfiles, "#{dest}arch/")
 puts "Copied #{archfiles.length} arch files"
@@ -133,3 +136,10 @@ puts "Copied #{binfiles.length} bin files"
 pamfiles = Dir.glob("/etc/pam.d/*")
 FileUtils.cp_r(pamfiles, "#{dest}pam/")
 puts "Copied #{pamfiles.length} pam files"
+
+# syslinux
+syslinuxfiles = []
+path = "/boot/syslinux/"
+syslinuxfiles << "#{path}syslinux.cfg"
+FileUtils.cp(syslinuxfiles, "#{dest}syslinux/")
+puts "Copied #{slimfiles.length} syslinux files"
