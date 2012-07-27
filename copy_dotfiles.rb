@@ -143,3 +143,13 @@ path = "/boot/syslinux/"
 syslinuxfiles << "#{path}syslinux.cfg"
 FileUtils.cp(syslinuxfiles, "#{dest}syslinux/")
 puts "Copied #{slimfiles.length} syslinux files"
+
+# monsterwm files
+path = "/home/rob/.config/monsterwm/"
+monsterwmfiles = []
+monsterwmfiles << "#{path}config.h"
+monsterwmfiles << "#{path}monsterwm.c"
+monsterwmfiles << "/usr/bin/monsterwm_start"
+monsterwmfiles << "/usr/share/xsessions/monsterwm_start.desktop"
+FileUtils.cp_r(monsterwmfiles, "#{dest}monsterwm/")
+puts "Copied #{monsterwmfiles.length} monsterwm files"
