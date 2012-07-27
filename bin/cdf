@@ -21,6 +21,7 @@ conkyfiles << "#{path}scripts/ConkyStartup.sh"
 conkyfiles << "#{path}conky_bottomleft"
 conkyfiles << "#{path}conky_topright"
 conkyfiles << "#{path}conky_dwm"
+conkyfiles << "#{path}conky_monsterwm"
 FileUtils.cp(conkyfiles, "#{dest}conky/")
 puts "Copied #{conkyfiles.length} conky files"
 
