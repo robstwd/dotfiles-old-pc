@@ -8,11 +8,10 @@ total_run_times 0
 use_spacer left
 
 TEXT
- |   pacnew ${execi 120 ruby ~/bin/pacnoob}  \
- |   &9dotfiles ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}  \
- |   ${if_match "${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}"=="uptodate"}&5dotfiles ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${else}&9dotfiles ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${endif}  \
+ |   ${if_match "${exec ruby ~/bin/pacnoob}"=="0"}&5pacnew ${execi 120 ruby ~/bin/pacnoob}${else}&9pacnew ${execi 120 ruby ~/bin/pacnoob}${endif}  \
+ |   ${if_match "${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}"=="up to date"}&5dotfiles ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${else}&9dotfiles ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${endif}  \
  |   &5cpu ${cpu cpu1}% - ${cpu cpu2}%   \
  |   ${if_match "${memperc}">"80"}&9ram $memperc%  (${mem})${else}&8ram $memperc%  (${mem})${endif}   \
- |   &8home ${fs_used_perc /home}%   \
+ |   &5home ${fs_used_perc /home}%   \
  |   $kernel   \
  |   ${time %F %R} 
