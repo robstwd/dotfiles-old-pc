@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=monsterwm_start
+Comment=Dynamic window manager
+Exec=monsterwm_start
+Icon=monsterwm
+Type=XSession

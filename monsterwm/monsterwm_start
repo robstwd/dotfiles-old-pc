@@ -1,0 +1,58 @@
+#!/bin/bash
+
+xscreensaver -no-splash &
+
+#~  conky variation
+#conky -q -c ~/.config/conky/conky_dwm | while read -r; do xsetroot -name "$REPLY"; done &
+
+# to restore the last wallpaper used in nitrogen
+nitrogen --restore &
+
+# change the mouse to standard left-pointing
+xsetroot -cursor_name left_ptr &
+
+#exec monsterwm
+
+# from c00kiemonster
+# https://gist.github.com/1905427
+
+: "${wm:=monsterwm}"
+: "${ff:="/tmp/$RANDOM.monsterwm.fifo"}"
+
+tags=('1' '2' '3' '4')
+
+layouts=('[]=' '[ ]' 'TTT' '[#]') 
+
+conky | dzen2 -h 18 -x 320 -ta r -e -p -fn &
+
+# Check if it's a pipe, otherwise create it
+[[ -p $ff ]] || mkfifo -m 600 "$ff"
+
+while read -r wmout; do
+    desktops=($(cut -d"|" -f1 <<< "$wmout" | tr " " "\n"))
+    title=$(cut -d"|" -f2- <<< "$wmout")
+
+    for desktop in "${desktops[@]}"; do
+        IFS=':' read -r d w m c u <<< "$desktop"
+
+        # Tags labels
+        label="${tags[$d]}"
+
+        # Is this the current desktop ? save the layout
+        ((c)) && fg="#fefefe" bg="#204a87" && layout="${layouts[$m]}" \
+              || fg="#b3b3b3" bg=""
+
+        # Has windows ?
+        ((w)) && fg="#fce94f"
+
+        # Urgent windows ?
+        ((u)) && fg="#ef2929"
+
+        tmp+="^fg($fg)^bg($bg) $label ^bg()^fg()"
+    done
+    # Merge the clients indications and the tile mode
+    echo "$tmp $layout $title" && unset tmp
+done < "$ff" | dzen2 -w 320 -h 18 -ta l -e -p &
+
+while :; do "$wm" || break; done | tee -a "$ff"
+#$wm > "$ff"
