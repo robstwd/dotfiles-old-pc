@@ -12,8 +12,11 @@
 # exec ck-launch-session openbox-session
 # exec openbox-session
 
+xset +fp /usr/share/fonts/local
+xset fp rehash
+
 DEFAULT_SESSION=awesome
 case $1 in
-  awesome|openbox-session|dwm-personalised|xbmc) exec $1 ;;
+  awesome|openbox-session|dwm-personalised|xbmc|monsterwm_start) exec $1 ;;
   *) exec $DEFAULT_SESSION ;;
 esac
