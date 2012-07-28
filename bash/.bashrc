@@ -14,6 +14,13 @@ bind '"\t":menu-complete'
 alias ls='ls --color=auto'
 alias lock='xscreensaver-command --lock'
 
+# xinit aliases
+alias stm='xinit monsterwm_start'
+alias sta='xinit awesome'
+alias sto='xinit openbox-session'
+alias std='xinit dwm-personalised'
+alias stx='xinit xbmc'
+
 # git aliases
 alias gs='git status'
 alias ga='git add'
