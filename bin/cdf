@@ -49,6 +49,10 @@ archfiles << "#{path}pacman.conf"
 archfiles << "#{path}pacman.d/mirrorlist"
 #archfiles << "#{path}gshadow"  # permission error with this one; commented out
 archfiles << "#{path}group"
+archfiles << "#{path}vconsole.conf"
+archfiles << "#{path}locale.conf"
+archfiles << "#{path}hostname"
+archfiles << "#{path}/modules-load.d/vboxdrv.conf"
 archfiles << "/home/rob/.xinitrc"
 FileUtils.cp(archfiles, "#{dest}arch/")
 puts "Copied #{archfiles.length} arch files"
