@@ -68,7 +68,7 @@ puts "Copied #{gitfiles.length} git files"
 # Terminal urxvt
 urxvtfiles = []
 path = "/home/rob/"
-urxvtfiles << "#{path}.Xdefaults"
+#urxvtfiles << "#{path}.Xdefaults"
 urxvtfiles << "/home/rob/.config/xfce4/helpers.rc"
 FileUtils.cp(urxvtfiles, "#{dest}terminal/")
 puts "Copied #{urxvtfiles.length} urxvt files"
@@ -84,6 +84,7 @@ puts "Copied #{tint2files.length} tint2 files"
 xorgfiles = []
 path = "/etc/X11/"
 xorgfiles << "#{path}xorg.conf"
+xorgfiles << "/home/rob/.Xresources"
 FileUtils.cp(xorgfiles, "#{dest}xorg/")
 puts "Copied #{xorgfiles.length} xorg files"
 
