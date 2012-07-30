@@ -44,7 +44,8 @@ static const AppRule rules[] = { \
  * must always end with ', NULL };'
  */
 static const char *termcmd[] = { "urxvt",     NULL };
-static const char *menucmd[] = { "dmenu_run", NULL };
+/* static const char *menucmd[] = { "dmenu_run", NULL }; */
+static const char *menucmd[] = { "dmenu_run", "-fn", "Terminus 14", NULL };
 static const char *filemanagercmd[] = { "thunar", NULL };
 static const char *lockcmd[] = { "/home/rob/bin/lock", NULL };
 
