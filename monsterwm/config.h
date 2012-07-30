@@ -44,10 +44,14 @@ static const AppRule rules[] = { \
  * must always end with ', NULL };'
  */
 static const char *termcmd[] = { "urxvt",     NULL };
-/* static const char *menucmd[] = { "dmenu_run", NULL }; */
+static const char *terminatorcmd[] = { "terminator",     NULL };
 static const char *menucmd[] = { "dmenu_run", "-fn", "-*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*", NULL };
 static const char *filemanagercmd[] = { "thunar", NULL };
 static const char *lockcmd[] = { "/home/rob/bin/lock", NULL };
+static const char *uzblcmd[] = { "uzbl", NULL };
+static const char *xonoticcmd[] = { "xonotic-glx", NULL };
+static const char *solcmd[] = { "sol", NULL };
+static const char *miragecmd[] = { "mirage", NULL };
 
 #define DESKTOPCHANGE(K,N) \
     {  MOD1,             K,              change_desktop, {.i = N}}, \
@@ -86,6 +90,11 @@ static Key keys[] = {
     {  MOD1,             XK_m,          spawn,             {.com = menucmd}},
     {  MOD1,             XK_t,          spawn,             {.com = filemanagercmd}},
     {  MOD1|CONTROL,     XK_l,          spawn,             {.com = lockcmd}},
+    {  MOD1,             XK_e,          spawn,             {.com = terminatorcmd}},
+    {  MOD1,             XK_u,          spawn,             {.com = uzblcmd}},
+    {  MOD1,             XK_x,          spawn,             {.com = xonoticcmd}},
+    {  MOD1,             XK_s,          spawn,             {.com = solcmd}},
+    {  MOD4,             XK_m,          spawn,             {.com = miragecmd}},
     {  MOD4,             XK_j,          moveresize,        {.v = (int []){   0,  25,   0,   0 }}}, /* move up    */
     {  MOD4,             XK_k,          moveresize,        {.v = (int []){   0, -25,   0,   0 }}}, /* move down  */
     {  MOD4,             XK_l,          moveresize,        {.v = (int []){  25,   0,   0,   0 }}}, /* move right */
