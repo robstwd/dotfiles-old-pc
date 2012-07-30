@@ -19,8 +19,8 @@
 #define FOLLOW_WINDOW   True     /* follow the window when moved to a different desktop */
 #define FOLLOW_MOUSE    True      /* focus the window the mouse just entered */
 #define CLICK_TO_FOCUS  True      /* focus an unfocused window when clicked  */
-#define BORDER_WIDTH    2         /* window border width */
-#define FOCUS           "#ff950e" /* focused window border color    */
+#define BORDER_WIDTH    1         /* window border width */
+#define FOCUS           "#000ac9" /* focused window border color    */
 #define UNFOCUS         "#444444" /* unfocused window border color  */
 #define MINWSZ          50        /* minimum window size in pixels  */
 #define DEFAULT_DESKTOP 0         /* the desktop to focus initially */
@@ -45,7 +45,7 @@ static const AppRule rules[] = { \
  */
 static const char *termcmd[] = { "urxvt",     NULL };
 /* static const char *menucmd[] = { "dmenu_run", NULL }; */
-static const char *menucmd[] = { "dmenu_run", "-fn", "Terminus 14", NULL };
+static const char *menucmd[] = { "dmenu_run", "-fn", "-*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*", NULL };
 static const char *filemanagercmd[] = { "thunar", NULL };
 static const char *lockcmd[] = { "/home/rob/bin/lock", NULL };
 
