@@ -13,7 +13,7 @@
 #define MASTER_SIZE     0.52
 #define SHOW_PANEL      True      /* show panel by default on exec */
 #define TOP_PANEL       True      /* False means panel is on bottom */
-#define PANEL_HEIGHT    18        /* 0 for no space for panel, thus no panel */
+#define PANEL_HEIGHT    16        /* 0 for no space for panel, thus no panel */
 #define DEFAULT_MODE    TILE      /* initial layout/mode: TILE MONOCLE BSTACK GRID FLOAT */
 #define ATTACH_ASIDE    False      /* False means new window is master */
 #define FOLLOW_WINDOW   True     /* follow the window when moved to a different desktop */
