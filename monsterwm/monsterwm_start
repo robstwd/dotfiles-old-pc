@@ -9,14 +9,12 @@ nitrogen --restore &
 xsetroot -cursor_name left_ptr &
 
 #exec monsterwm
-
-# from c00kiemonster
-# https://bbs.archlinux.org/viewtopic.php?id=126463&p=13
+# from arch user stlarch
 
 ff="/tmp/monsterwm.fifo"
 [[ -p $ff ]] || mkfifo -m 600 "$ff"
 
-ds=("one" "two" "three" "four")
+ds=(" 1 " " 2 " " 3 " " 4 ")
 
 ms=("T" "M" "B" "G" "F")
 
@@ -26,12 +24,13 @@ while read -t 60 -r wmout || true; do
         read -ra desktops <<< "$wmout"
         for desktop in "${desktops[@]}"; do
             IFS=':' read -r d w m c u <<< "$desktop"
-            ((c)) && fg="&3" i="${ms[$m]}" || fg="&2"
-            ((u)) && w+='&9!'
-            r+="$fg${ds[$d]} ${w/#0/&8-}    "
+            ((c)) && fg="&0" bg="&B3" i="${ms[$m]}" || fg="&7" bg="&B0"
+            ((w)) && ((! c)) && fg="&2" bg="&B6" 
+            ((u)) && fg="&9" bg="&B0"
+            r+="$fg$bg${ds[$d]}"
         done
         r="${r%::*}"
-        printf "%s\n" "$r &3$i"
+        printf "%s\n" "$r &B0&2$i"
     fi
 
 done < "$ff" | splitter_bar &
