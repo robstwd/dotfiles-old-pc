@@ -159,3 +159,10 @@ monsterwmfiles << "/usr/bin/monsterwm_start"
 monsterwmfiles << "/usr/share/xsessions/monsterwm_start.desktop"
 FileUtils.cp_r(monsterwmfiles, "#{dest}monsterwm/")
 puts "Copied #{monsterwmfiles.length} monsterwm files"
+
+# splitter_bar files
+path = "/home/rob/.config/splitter_bar/"
+splitter_barfiles = []
+splitter_barfiles << "#{path}splitter_bar.c"
+FileUtils.cp_r(splitter_barfiles, "#{dest}splitter_bar/")
+puts "Copied #{splitter_barfiles.length} splitter_bar files"
