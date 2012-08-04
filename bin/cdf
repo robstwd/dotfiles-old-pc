@@ -91,7 +91,7 @@ puts "Copied #{xorgfiles.length} xorg files"
 # slim
 slimfiles = []
 path = "/etc/"
-slimfiles << "#{path}slim.conf"
+#slimfiles << "#{path}slim.conf"
 FileUtils.cp(slimfiles, "#{dest}slim/")
 puts "Copied #{slimfiles.length} slim files"
 
@@ -148,7 +148,7 @@ syslinuxfiles = []
 path = "/boot/syslinux/"
 syslinuxfiles << "#{path}syslinux.cfg"
 FileUtils.cp(syslinuxfiles, "#{dest}syslinux/")
-puts "Copied #{slimfiles.length} syslinux files"
+puts "Copied #{syslinuxfiles.length} syslinux files"
 
 # monsterwm files
 path = "/home/rob/.config/monsterwm/"
