@@ -9,4 +9,4 @@ UUID=0228ef57-d971-4628-9e14-6992f2744a6b / ext4 defaults 0 1
 UUID=381f4c9d-46d9-4618-8eb7-a484e5acc77b /home ext4 defaults 0 1
 UUID=5c17374c-b1d5-4c4d-8bda-ba51a14d9020 swap swap defaults 0 0
 UUID=95920bb9-f514-451b-9fdc-ff4b0b2cb4f9 /boot ext2 defaults 0 1
-/dev/sdb1 /media/HD-PNTU3 ntfs-3g uid=rob,gid=users 0 0 
+/dev/sdb1 /media/HD-PNTU3 ntfs-3g uid=rob,gid=users,noauto 0 0 
