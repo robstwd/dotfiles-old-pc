@@ -36,7 +36,7 @@ puts "Copied #{bashfiles.length} bash files"
 # Arch linux config files
 archfiles = []
 path = "/etc/"
-archfiles << "#{path}rc.conf"
+#archfiles << "#{path}rc.conf"
 archfiles << "#{path}fstab"
 archfiles << "#{path}mkinitcpio.conf"
 archfiles << "#{path}modprobe.d/modprobe.conf"
