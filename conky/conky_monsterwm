@@ -25,10 +25,10 @@ use_spacer left
 
 TEXT
  &R\
- &7|&4  ${if_match "${exec ruby ~/bin/pacnoob}"=="0"}pacnew ${execi 120 ruby ~/bin/pacnoob}${else}&9pacnew ${execi 120 ruby ~/bin/pacnoob}${endif} \
- &7|&4  ${if_match "${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}"=="up to date"}dotfiles ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${else}&9dotfiles ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${endif}&B0 \
- &7|&4  cpu ${cpu cpu1}% - ${cpu cpu2}%  \
- &7|&4  ${if_match "${memperc}">"80"}ram $memperc%  (${mem})${else}ram $memperc%  (${mem})${endif}  \
- &7|&4  home ${fs_used_perc /home}%  \
+ &7|&2  ${if_match "${exec ruby ~/bin/pacnoob}"=="0"}pacnew &4${execi 120 ruby ~/bin/pacnoob}${else}&9pacnew ${execi 120 ruby ~/bin/pacnoob}${endif} \
+ &7|&2  ${if_match "${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}"=="up to date"}dotfiles &4${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${else}&9dotfiles ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${endif}&B0 \
+ &7|&2  cpu &4${cpu cpu1}% - ${cpu cpu2}%  \
+ &7|&2  ${if_match "${memperc}">"80"}ram &4$memperc%  (${mem})${else}ram &4$memperc%  (${mem})${endif}  \
+ &7|&2  home &4${fs_used_perc /home}%  \
  &7|&4  $kernel  \
  &7|&4  ${time %F %R} 
