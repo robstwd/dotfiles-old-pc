@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# workaround to mount the Buffalo 1TB hard drive
+
+sudo umount -l /dev/sdb1
