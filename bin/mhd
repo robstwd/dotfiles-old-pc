@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# workaround to mount the Buffalo 1TB hard drive
+
+sudo umount -l /dev/sdb1 && sudo mount -t ntfs-3g /dev/sdb1 /media/HD-PNTU3
+
+thunar /media/HD-PNTU3 &
