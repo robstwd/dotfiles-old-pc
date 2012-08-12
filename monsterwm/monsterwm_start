@@ -24,7 +24,8 @@ while read -t 60 -r wmout || true; do
         read -ra desktops <<< "$wmout"
         for desktop in "${desktops[@]}"; do
             IFS=':' read -r d w m c u <<< "$desktop"
-            ((c)) && fg="&0" bg="&B3" i="${ms[$m]}" || fg="&7" bg="&B0"
+            #~ ((c)) && fg="&0" bg="&B3" i="${ms[$m]}" || fg="&7" bg="&B0"
+            ((c)) && fg="&0" bg="&B9" i="${ms[$m]}" || fg="&7" bg="&B0"
             ((w)) && ((! c)) && fg="&2" bg="&B6" 
             ((u)) && fg="&9" bg="&B0"
             r+="$fg$bg${ds[$d]}"
@@ -33,7 +34,8 @@ while read -t 60 -r wmout || true; do
         printf "%s\n" "$r &B0&2$i"
     fi
 
-done < "$ff" | splitter_bar &
+# done < "$ff" | splitter_bar &
+done < "$ff" | bipolarbar &
 
 conky -c ~/.config/conky/conky_monsterwm| while read -r; do xsetroot -name "$REPLY"; done &
 
