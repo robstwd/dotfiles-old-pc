@@ -13,6 +13,8 @@ bind '"\t":menu-complete'
 # aliases
 alias ls='ls --color=auto'
 alias lock='xscreensaver-command --lock'
+alias lmts='blkid -o list -c /dev/null'
+alias luds='ls -lF /dev/disk/by-uuid/'
 
 # xinit aliases
 alias stm='xinit monsterwm_start'
