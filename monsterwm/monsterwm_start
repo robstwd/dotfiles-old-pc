@@ -25,19 +25,19 @@ while read -t 60 -r wmout || true; do
         for desktop in "${desktops[@]}"; do
             IFS=':' read -r d w m c u <<< "$desktop"
             
-            #~ ((c)) => current desktop
-            ((c)) && fg="&0" bg="&B9" i="${ms[$m]}" || fg="&7" bg="&B0"
+            #~ ((c)) => current desktop (fg=black, bg=blue; if not current then fg=grey & bg=black)
+            ((c)) && fg="&0" bg="&B8" i=" ${ms[$m]}" || fg="&3" bg="&B0"
             
-            #~ ((w)) => desktop with windows
+            #~ ((w)) => desktop with windows (fg=light grey & bg=dark grey)
             ((w)) && ((! c)) && fg="&2" bg="&B6" 
             
-            #~ ((u)) => desktop with urgent messages
+            #~ ((u)) => desktop with urgent messages (fg=orange & bg=black)
             ((u)) && fg="&9" bg="&B0"
             
             r+="$fg$bg${ds[$d]}"
         done
         r="${r%::*}"
-        printf "%s\n" "$r &B0&2$i"
+        printf "%s\n" "$r&B0&2$i"
     fi
 
 done < "$ff" | bipolarbar &
