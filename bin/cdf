@@ -160,9 +160,11 @@ monsterwmfiles << "/usr/share/xsessions/monsterwm_start.desktop"
 FileUtils.cp_r(monsterwmfiles, "#{dest}monsterwm/")
 puts "Copied #{monsterwmfiles.length} monsterwm files"
 
-# splitter_bar files
-path = "/home/rob/.config/splitter_bar/"
-splitter_barfiles = []
-splitter_barfiles << "#{path}splitter_bar.c"
-FileUtils.cp_r(splitter_barfiles, "#{dest}splitter_bar/")
-puts "Copied #{splitter_barfiles.length} splitter_bar files"
+# bipolarbar files
+path = "/home/rob/.config/bipolarbar/"
+bipolarbarfiles = []
+bipolarbarfiles << "#{path}bipolarbar.c"
+bipolarbarfiles << "#{path}config.h"
+bipolarbarfiles << "#{path}config.h.def"
+FileUtils.cp_r(bipolarbarfiles, "#{dest}bipolarbar/")
+puts "Copied #{bipolarbarfiles.length} bipolarbar files"
