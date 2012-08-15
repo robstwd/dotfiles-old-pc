@@ -18,7 +18,7 @@
 #define colour5 "#444444"
 #define colour6 "#555555"
 #define colour7 "#666666"
-#define colour8 "#1c678c"
+#define colour8 "#0099ff"
 #define colour9 "#ff950e"  // &9
 
 #endif
