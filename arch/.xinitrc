@@ -20,6 +20,6 @@ xset fp rehash
 
 DEFAULT_SESSION=awesome
 case $1 in
-  awesome|openbox-session|dwm-personalised|xbmc|monsterwm_start) exec $1 ;;
+  awesome|openbox-session|dwm-personalised|xbmc|monsterwm_start|dminiwm_start|snapwm_start) exec $1 ;;
   *) exec $DEFAULT_SESSION ;;
 esac
