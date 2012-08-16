@@ -22,6 +22,8 @@ alias sta='xinit awesome'
 alias sto='xinit openbox-session'
 alias std='xinit dwm-personalised'
 alias stx='xinit xbmc'
+alias stdm='xinit dminiwm_start'
+alias sts='xinit snapwm_start'
 
 # git aliases
 alias gs='git status'
