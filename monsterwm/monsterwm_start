@@ -4,9 +4,13 @@ xscreensaver -no-splash &
 
 # to restore the last wallpaper used in nitrogen
 nitrogen --restore &
+#~ bgs ~/Pictures/backgrounds/bw8lw.jpg &
 
 # change the mouse to standard left-pointing
 xsetroot -cursor_name left_ptr &
+
+# activate numlock on bootup (https://wiki.archlinux.org/index.php/Activating_Numlock_on_Bootup)
+numlockx &
 
 #exec monsterwm
 # from arch user stlarch
