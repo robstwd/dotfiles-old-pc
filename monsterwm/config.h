@@ -48,10 +48,10 @@ static const char *terminatorcmd[] = { "terminator",     NULL };
 static const char *menucmd[] = { "dmenu_run", "-fn", "-*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*", NULL };
 static const char *filemanagercmd[] = { "thunar", NULL };
 static const char *lockcmd[] = { "/home/rob/bin/lock", NULL };
-static const char *uzblcmd[] = { "uzbl", NULL };
+static const char *webcmd[] = { "uzbl", NULL };
 static const char *xonoticcmd[] = { "xonotic-glx", NULL };
 static const char *solcmd[] = { "sol", NULL };
-static const char *miragecmd[] = { "mirage", NULL };
+static const char *imagecmd[] = { "mirage", NULL };
 
 #define DESKTOPCHANGE(K,N) \
     {  MOD1,             K,              change_desktop, {.i = N}}, \
@@ -64,45 +64,55 @@ static Key keys[] = {
     /* modifier          key            function           argument */
     {  MOD1,             XK_b,          togglepanel,       {NULL}},
     {  MOD1,             XK_BackSpace,  focusurgent,       {NULL}},
-    {  MOD1|SHIFT,       XK_c,          killclient,        {NULL}},
-    {  MOD1,             XK_j,          next_win,          {NULL}},
-    {  MOD1,             XK_k,          prev_win,          {NULL}},
-    {  MOD1,             XK_h,          resize_master,     {.i = -10}}, /* decrease size in px */
-    {  MOD1,             XK_l,          resize_master,     {.i = +10}}, /* increase size in px */
-    {  MOD1,             XK_o,          resize_stack,      {.i = -10}}, /* shrink   size in px */
-    {  MOD1,             XK_p,          resize_stack,      {.i = +10}}, /* grow     size in px */
-    {  MOD1|CONTROL,     XK_h,          rotate,            {.i = -1}},
-    {  MOD1|CONTROL,     XK_l,          rotate,            {.i = +1}},
-    {  MOD1|SHIFT,       XK_h,          rotate_filled,     {.i = -1}},
-    {  MOD1|SHIFT,       XK_l,          rotate_filled,     {.i = +1}},
-    {  MOD1,             XK_Tab,        last_desktop,      {NULL}},
-    {  MOD1,             XK_Return,     swap_master,       {NULL}},
-    {  MOD1|SHIFT,       XK_j,          move_down,         {NULL}},
-    {  MOD1|SHIFT,       XK_k,          move_up,           {NULL}},
-    {  MOD1|SHIFT,       XK_t,          switch_mode,       {.i = TILE}},
-    {  MOD1|SHIFT,       XK_m,          switch_mode,       {.i = MONOCLE}},
-    {  MOD1|SHIFT,       XK_b,          switch_mode,       {.i = BSTACK}},
-    {  MOD1|SHIFT,       XK_g,          switch_mode,       {.i = GRID}},
-    {  MOD1|SHIFT,       XK_f,          switch_mode,       {.i = FLOAT}},
-    {  MOD1|CONTROL,     XK_r,          quit,              {.i = 0}}, /* quit with exit value 0 */
-    {  MOD1|CONTROL,     XK_q,          quit,              {.i = 1}}, /* quit with exit value 1 */
-    {  MOD1|SHIFT,       XK_Return,     spawn,             {.com = termcmd}},
-    {  MOD1,             XK_m,          spawn,             {.com = menucmd}},
-    {  MOD1,             XK_t,          spawn,             {.com = filemanagercmd}},
-    {  MOD4|CONTROL,     XK_l,          spawn,             {.com = lockcmd}},
     {  MOD1,             XK_e,          spawn,             {.com = terminatorcmd}},
-    {  MOD1,             XK_u,          spawn,             {.com = uzblcmd}},
+    {  MOD1,             XK_w,          spawn,             {.com = webcmd}},
     {  MOD1,             XK_x,          spawn,             {.com = xonoticcmd}},
     {  MOD1,             XK_s,          spawn,             {.com = solcmd}},
-    {  MOD4,             XK_m,          spawn,             {.com = miragecmd}},
-    {  MOD4,             XK_j,          moveresize,        {.v = (int []){   0,  25,   0,   0 }}}, /* move up    */
-    {  MOD4,             XK_k,          moveresize,        {.v = (int []){   0, -25,   0,   0 }}}, /* move down  */
-    {  MOD4,             XK_l,          moveresize,        {.v = (int []){  25,   0,   0,   0 }}}, /* move right */
-    {  MOD4,             XK_h,          moveresize,        {.v = (int []){ -25,   0,   0,   0 }}}, /* move left  */
-    {  MOD4|SHIFT,       XK_j,          moveresize,        {.v = (int []){   0,   0,   0,  25 }}}, /* height grow   */
-    {  MOD4|SHIFT,       XK_k,          moveresize,        {.v = (int []){   0,   0,   0, -25 }}}, /* height shrink */
-    {  MOD4|SHIFT,       XK_l,          moveresize,        {.v = (int []){   0,   0,  25,   0 }}}, /* width grow    */
-    {  MOD4|SHIFT,       XK_h,          moveresize,        {.v = (int []){   0,   0, -25,   0 }}}, /* width shrink  */
+    {  MOD1,             XK_i,          spawn,             {.com = imagecmd}},    
+    {  MOD1,             XK_m,          spawn,             {.com = menucmd}},
+    {  MOD1,             XK_f,          spawn,             {.com = filemanagercmd}},    
+    {  MOD1,             XK_t,          spawn,             {.com = termcmd}},
+
+    {  MOD1|SHIFT,       XK_c,          killclient,        {NULL}},        
+      
+    /* {  MOD1,             XK_h,          resize_master,     {.i = -10}}, */ /* decrease size in px */
+    /* {  MOD1,             XK_l,          resize_master,     {.i = +10}}, */ /* increase size in px */
+    /* {  MOD1,             XK_o,          resize_stack,      {.i = -10}}, */ /* shrink   size in px */
+    /* {  MOD1,             XK_p,          resize_stack,      {.i = +10}}, */ /* grow     size in px */    
+    {  MOD1,             XK_Tab,        last_desktop,      {NULL}},
+    {  MOD1,             XK_Return,     swap_master,       {NULL}},    
+
+    /* {  MOD1|SHIFT,       XK_h,          rotate_filled,     {.i = -1}}, */
+    /* {  MOD1|SHIFT,       XK_l,          rotate_filled,     {.i = +1}},   */  
+    /* {  MOD1|SHIFT,       XK_j,          move_down,         {NULL}}, */
+    /* {  MOD1|SHIFT,       XK_k,          move_up,           {NULL}}, */
+
+    /* {  MOD1|CONTROL,     XK_h,          rotate,            {.i = -1}},*/
+    /* {  MOD1|CONTROL,     XK_l,          rotate,            {.i = +1}},*/
+
+    {  MOD4,             XK_j,          next_win,          {NULL}},
+    {  MOD4,             XK_k,          prev_win,          {NULL}},
+
+    {  MOD4,             XK_t,          switch_mode,       {.i = TILE}},
+    {  MOD4,             XK_m,          switch_mode,       {.i = MONOCLE}},
+    {  MOD4,             XK_b,          switch_mode,       {.i = BSTACK}},
+    {  MOD4,             XK_g,          switch_mode,       {.i = GRID}},
+    {  MOD4,             XK_f,          switch_mode,       {.i = FLOAT}},
+
+    /* {  MOD4|CONTROL      XK_j,          moveresize,        {.v = (int []){   0,  25,   0,   0 }}}, */ /* move up    */
+    /* {  MOD4|CONTROL      XK_k,          moveresize,        {.v = (int []){   0, -25,   0,   0 }}}, */ /* move down  */
+    /* {  MOD4|CONTROL      XK_l,          moveresize,        {.v = (int []){  25,   0,   0,   0 }}}, */ /* move right */
+    /* {  MOD4|CONTROL      XK_h,          moveresize,        {.v = (int []){ -25,   0,   0,   0 }}}, */ /* move left  */
+
+    {  MOD4|CONTROL,     XK_r,          quit,              {.i = 0}}, /* quit with exit value 0 */
+    {  MOD4|CONTROL,     XK_q,          quit,              {.i = 1}}, /* quit with exit value 1 */
+    {  MOD4|CONTROL,     XK_l,          spawn,             {.com = lockcmd}},
+
+    /* {  MOD4|SHIFT,       XK_j,          moveresize,        {.v = (int []){   0,   0,   0,  25 }}}, */ /* height grow   */
+    /* {  MOD4|SHIFT,       XK_k,          moveresize,        {.v = (int []){   0,   0,   0, -25 }}}, */ /* height shrink */
+    /* {  MOD4|SHIFT,       XK_l,          moveresize,        {.v = (int []){   0,   0,  25,   0 }}}, */ /* width grow    */
+    /* {  MOD4|SHIFT,       XK_h,          moveresize,        {.v = (int []){   0,   0, -25,   0 }}}, */ /* width shrink  */
+
        DESKTOPCHANGE(    XK_F1,                             0)
        DESKTOPCHANGE(    XK_F2,                             1)
        DESKTOPCHANGE(    XK_F3,                             2)
