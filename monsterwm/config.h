@@ -48,10 +48,20 @@ static const char *terminatorcmd[] = { "terminator",     NULL };
 static const char *menucmd[] = { "dmenu_run", "-fn", "-*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*", NULL };
 static const char *filemanagercmd[] = { "thunar", NULL };
 static const char *lockcmd[] = { "/home/rob/bin/lock", NULL };
-static const char *webcmd[] = { "uzbl", NULL };
+static const char *uzblcmd[] = { "uzbl", NULL };
 static const char *xonoticcmd[] = { "xonotic-glx", NULL };
 static const char *solcmd[] = { "sol", NULL };
 static const char *imagecmd[] = { "mirage", NULL };
+static const char *geanycmd[] = { "geany", NULL };
+static const char *leafpadcmd[] = { "leafpad", NULL };
+static const char *vlccmd[] = { "vlc", NULL };
+static const char *keepasscmd[] = { "keepassx", NULL };
+static const char *calccmd[] = { "speedcrunch", NULL };
+static const char *chromiumcmd[] = { "chromium", NULL };
+static const char *officecmd[] = { "libreoffice", NULL };
+static const char *hugincmd[] = { "hugin", NULL };
+static const char *alsacmd[] = { "urxvt", "-e", "alsamixer", NULL };
+static const char *digikamcmd[] = { "digikam", NULL };
 
 #define DESKTOPCHANGE(K,N) \
     {  MOD1,             K,              change_desktop, {.i = N}}, \
@@ -62,16 +72,35 @@ static const char *imagecmd[] = { "mirage", NULL };
  */
 static Key keys[] = {
     /* modifier          key            function           argument */
-    {  MOD1,             XK_b,          togglepanel,       {NULL}},
+    /* APPICATION KEYBINDINGS */
+    {  MOD1,             XK_a,          spawn,             {.com = alsacmd}},           
+    {  MOD1,             XK_b,          togglepanel,       {NULL}},         
+    {  MOD1,             XK_c,          spawn,             {.com = chromiumcmd}},           
+    {  MOD1,             XK_d,          spawn,             {.com = digikamcmd}},           
+    {  MOD1,             XK_e,          spawn,             {.com = terminatorcmd}},          
+    {  MOD1,             XK_f,          spawn,             {.com = filemanagercmd}},           
+    {  MOD1,             XK_g,          spawn,             {.com = geanycmd}},          
+    {  MOD1,             XK_h,          spawn,             {.com = hugincmd}},              
+    {  MOD1,             XK_i,          spawn,             {.com = imagecmd}},           
+ /* {  MOD1,             XK_j,  */         
+    {  MOD1,             XK_k,          spawn,             {.com = keepasscmd}},           
+    {  MOD1,             XK_l,          spawn,             {.com = leafpadcmd}},          
+    {  MOD1,             XK_m,          spawn,             {.com = menucmd}},          
+ /* {  MOD1,             XK_n,  */         
+    {  MOD1,             XK_o,          spawn,             {.com = officecmd}},            
+ /* {  MOD1,             XK_p,  */         
+ /* {  MOD1,             XK_q,  */       
+ /* {  MOD1,             XK_r,  */       
+    {  MOD1,             XK_s,          spawn,             {.com = solcmd}},          
+    {  MOD1,             XK_t,          spawn,             {.com = termcmd}},          
+    {  MOD1,             XK_u,          spawn,             {.com = uzblcmd}},          
+    {  MOD1,             XK_v,          spawn,             {.com = vlccmd}},          
+ /* {  MOD1,             XK_w,  */        
+    {  MOD1,             XK_x,          spawn,             {.com = xonoticcmd}},          
+ /* {  MOD1,             XK_y,  */         
+ /* {  MOD1,             XK_z,  */         
+    
     {  MOD1,             XK_BackSpace,  focusurgent,       {NULL}},
-    {  MOD1,             XK_e,          spawn,             {.com = terminatorcmd}},
-    {  MOD1,             XK_w,          spawn,             {.com = webcmd}},
-    {  MOD1,             XK_x,          spawn,             {.com = xonoticcmd}},
-    {  MOD1,             XK_s,          spawn,             {.com = solcmd}},
-    {  MOD1,             XK_i,          spawn,             {.com = imagecmd}},    
-    {  MOD1,             XK_m,          spawn,             {.com = menucmd}},
-    {  MOD1,             XK_f,          spawn,             {.com = filemanagercmd}},    
-    {  MOD1,             XK_t,          spawn,             {.com = termcmd}},
 
     {  MOD1|SHIFT,       XK_c,          killclient,        {NULL}},        
       
@@ -87,8 +116,8 @@ static Key keys[] = {
     /* {  MOD1|SHIFT,       XK_j,          move_down,         {NULL}}, */
     /* {  MOD1|SHIFT,       XK_k,          move_up,           {NULL}}, */
 
-    /* {  MOD1|CONTROL,     XK_h,          rotate,            {.i = -1}},*/
-    /* {  MOD1|CONTROL,     XK_l,          rotate,            {.i = +1}},*/
+    {  MOD1|CONTROL,     XK_h,          rotate,            {.i = -1}},
+    {  MOD1|CONTROL,     XK_l,          rotate,            {.i = +1}},
 
     {  MOD4,             XK_j,          next_win,          {NULL}},
     {  MOD4,             XK_k,          prev_win,          {NULL}},
