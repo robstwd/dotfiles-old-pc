@@ -7,8 +7,14 @@ UUID=0228ef57-d971-4628-9e14-6992f2744a6b / ext4 defaults 0 1
 UUID=381f4c9d-46d9-4618-8eb7-a484e5acc77b /home ext4 defaults 0 1
 UUID=5c17374c-b1d5-4c4d-8bda-ba51a14d9020 swap swap defaults 0 0
 UUID=95920bb9-f514-451b-9fdc-ff4b0b2cb4f9 /boot ext2 defaults 0 1
-/dev/sdb1 /media/HD-PNTU3 ntfs-3g uid=rob,gid=users,noauto 0 0 
+
+# removable media
+/dev/sdb1 /mnt/HD-PNTU3 ntfs-3g uid=rob,gid=users,noauto 0 0 
+UUID=702A-0217 /mnt/canon500d vfat user,rw,umask=111,dmask=000,noauto 0 0
 
 # Raspberry Pi mounts
-#UUID=C28B-65EE /mnt/xbian/boot vfat user,rw,umask=111,dmask=000 0 0
-#UUID=0940e0d3-57a7-4c63-bcd1-d313764b9eb5 /mnt/xbian/files ext4 defaults,noauto 0 1
+#UUID=C28B-65EE /mnt/xbian/boot vfat user,rw,umask=111,dmask=000,noauto 0 0
+#UUID=0940e0d3-57a7-4c63-bcd1-d313764b9eb5 /mnt/xbian/files ext4 defaults,noauto 0 0
+
+#UUID=31AD-0BF7 /mnt/rasp_arch/boot vfat user,rw,umask=111,dmask=000 0 0
+#UUID=330da0ea-495f-4b63-9962-566397abc5ee /mnt/rasp_arch/files ext4 defaults,noauto 0 0
