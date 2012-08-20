@@ -12,48 +12,44 @@ xsetroot -cursor_name left_ptr &
 # activate numlock on bootup (https://wiki.archlinux.org/index.php/Activating_Numlock_on_Bootup)
 numlockx &
 
-#exec monsterwm
-# from arch user stlarch
+# the following was adapted from c00kiemon5ter's github gist here
+# https://gist.github.com/1905427
+# gist: monsterwm2dzen_with-titles_dwm-like
+
+tags=(' 1 ' ' 2 ' ' 3 ' ' 4 ')
+
+layouts=("T" "M" "B" "G" "F")
+
+conky -c ~/.config/conky/conky_monsterwm| while read -r; do xsetroot -name "$REPLY"; done &
 
 ff="/tmp/monsterwm.fifo"
 [[ -p $ff ]] || mkfifo -m 600 "$ff"
 
-ds=(" 1 " " 2 " " 3 " " 4 ")
+while read -r wmout; do
+    desktops=($(cut -d"|" -f1 <<< "$wmout" | tr " " "\n"))
+    title=$(cut -d"|" -f2- <<< "$wmout")
 
-ms=("T" "M" "B" "G" "F")
+    for desktop in "${desktops[@]}"; do
+        IFS=':' read -r d w m c u <<< "$desktop"
 
-#~ set values for 
-#~ d - the desktop id
-#~ w - number of windows in that desktop
-#~ m - tiling layout/mode for that desktop
-#~ c - whether the desktop is current (1) or not (0)
-#~ u - whether a window in that ddesktop has an urgent hint set or not
+        # Tags labels
+        label="${tags[$d]}"
 
-while read -t 60 -r wmout || true; do
-    if [[ $wmout =~ ^(([[:digit:]]+:)+[[:digit:]]+ ?)+$ ]]; then
-        unset r
-        read -ra desktops <<< "$wmout"
-        for desktop in "${desktops[@]}"; do
-            IFS=':' read -r d w m c u <<< "$desktop"
-            
-            #~ ((c)) => current desktop (fg=black, bg=blue; if not current then fg=grey & bg=black)
-            ((c)) && fg="&0" bg="&B8" i=" ${ms[$m]}" || fg="&3" bg="&B0"
-            
-            #~ ((w)) => desktop with windows (fg=light grey & bg=dark grey)
-            ((w)) && ((! c)) && fg="&2" bg="&B6" 
-            
-            #~ ((u)) => desktop with urgent messages (fg=orange & bg=black)
-            ((u)) && fg="&9" bg="&B0"
-            
-            r+="$fg$bg${ds[$d]}"
-        done
-        r="${r%::*}"
-        printf "%s\n" "$r&B0&2$i"
-    fi
+        # Is this the current desktop ? save the layout
+        ((c)) && fg="&0" bg="&B8" && layout="  ${layouts[$m]}" || fg="&3" bg="&B0"
+
+        # Has windows ?
+        ((w)) && ((! c)) && fg="&2" bg="&B6" 
+
+        # Urgent windows ?
+        ((u)) && fg="&9" bg="&B0"
+
+        tmp+="$fg$bg$label"
+    done
+
+    echo "$tmp&B0&2$layout  &B5&2$title" && unset tmp
 
 done < "$ff" | bipolarbar &
-
-conky -c ~/.config/conky/conky_monsterwm| while read -r; do xsetroot -name "$REPLY"; done &
 
 monsterwm > "$ff"
 
