@@ -97,8 +97,8 @@ static Key keys[] = {
     {  MOD1,             XK_v,          spawn,             {.com = vlccmd}},          
  /* {  MOD1,             XK_w,  */        
     {  MOD1,             XK_x,          spawn,             {.com = xonoticcmd}},          
- /* {  MOD1,             XK_y,  */         
- /* {  MOD1,             XK_z,  */         
+ /* {  MOD1,             XK_y,  */
+ /* {  MOD1,             XK_z,  */
     
     {  MOD1,             XK_BackSpace,  focusurgent,       {NULL}},
 
