@@ -15,7 +15,7 @@ alias ls='ls --color=auto'
 alias lock='xscreensaver-command --lock'
 alias lmts='blkid -o list -c /dev/null'
 alias luds='ls -lF /dev/disk/by-uuid/'
-
+alias keys="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
 # xinit aliases
 alias stm='xinit monsterwm_start'
 alias sta='xinit awesome'
