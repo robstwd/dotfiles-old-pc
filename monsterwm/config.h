@@ -116,11 +116,14 @@ static Key keys[] = {
     /* {  MOD1|SHIFT,       XK_j,          move_down,         {NULL}}, */
     /* {  MOD1|SHIFT,       XK_k,          move_up,           {NULL}}, */
 
-    {  MOD1|CONTROL,     XK_h,          rotate,            {.i = -1}},
-    {  MOD1|CONTROL,     XK_l,          rotate,            {.i = +1}},
+    /* {  MOD1|CONTROL,     XK_h,          rotate,            {.i = -1}},*/
+    /* {  MOD1|CONTROL,     XK_l,          rotate,            {.i = +1}},*/
 
     {  MOD4,             XK_j,          next_win,          {NULL}},
     {  MOD4,             XK_k,          prev_win,          {NULL}},
+    
+    {  MOD4,             XK_Left,       rotate,            {.i = -1}},
+    {  MOD4,             XK_Right,      rotate,            {.i = +1}},    
 
     {  MOD4,             XK_t,          switch_mode,       {.i = TILE}},
     {  MOD4,             XK_m,          switch_mode,       {.i = MONOCLE}},
