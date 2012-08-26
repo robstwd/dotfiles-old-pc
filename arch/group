@@ -40,3 +40,4 @@ dovecot:x:76:
 dovenull:x:74:
 usbmux:x:140:
 mysql:x:89:
+git:x:997:
