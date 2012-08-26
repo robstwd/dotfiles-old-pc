@@ -8,7 +8,8 @@ URxvt.foreground: white
 URxvt.cursorColor: yellow
 URxvt.underlineColor: green
 !URxvt.font:xft:Bitstream Vera Sans Mono:pixelsize=12:antialias=false
-URxvt.font:xft:Terminus:pixelsize=14:antialias=true
+!URxvt.font:xft:Terminus:pixelsize=14:antialias=true
+URxvt.font:xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true
 URxvt.perl-ext-common:  default,tabbed
 URxvt.scrollBar: false
 URxvt.scrollstyle: plain
