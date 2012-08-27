@@ -48,6 +48,7 @@ static const char *terminatorcmd[] = { "terminator",     NULL };
 static const char *menucmd[] = { "dmenu_run", "-fn", "-*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*", NULL };
 static const char *filemanagercmd[] = { "thunar", NULL };
 static const char *lockcmd[] = { "/home/rob/bin/lock", NULL };
+static const char *motioncmd[] = { "/home/rob/bin/mot", NULL };
 static const char *uzblcmd[] = { "uzbl", NULL };
 static const char *xonoticcmd[] = { "xonotic-glx", NULL };
 static const char *solcmd[] = { "sol", NULL };
@@ -62,6 +63,8 @@ static const char *officecmd[] = { "libreoffice", NULL };
 static const char *hugincmd[] = { "hugin", NULL };
 static const char *alsacmd[] = { "urxvt", "-e", "alsamixer", NULL };
 static const char *digikamcmd[] = { "digikam", NULL };
+static const char *scrotcmd[] = { "scrot", "%Y-%m-%d-%H%M%S_$wx$h.png", NULL };
+static const char *shutdowncmd[] = { "sudo", "shutdown", "-h", "now", NULL };
 
 #define DESKTOPCHANGE(K,N) \
     {  MOD1,             K,              change_desktop, {.i = N}}, \
@@ -101,6 +104,10 @@ static Key keys[] = {
  /* {  MOD1,             XK_z,  */
     
     {  MOD1,             XK_BackSpace,  focusurgent,       {NULL}},
+    {  MOD1,             XK_F12,        spawn,             {.com = motioncmd}},
+    {  0,                XK_Menu,       spawn,             {.com = menucmd}},
+    {  0,                XK_Print,      spawn,             {.com = scrotcmd}},
+ /* {  0,                XK_XF86Calculator,      spawn,    {.com = calccmd}},   */
 
     {  MOD1|SHIFT,       XK_c,          killclient,        {NULL}},        
       
@@ -123,7 +130,9 @@ static Key keys[] = {
     {  MOD4,             XK_k,          prev_win,          {NULL}},
     
     {  MOD4,             XK_Left,       rotate,            {.i = -1}},
-    {  MOD4,             XK_Right,      rotate,            {.i = +1}},    
+    {  MOD4,             XK_Right,      rotate,            {.i = +1}},
+
+    {  MOD4,             XK_Pause,      spawn,             {.com = shutdowncmd}},
 
     {  MOD4,             XK_t,          switch_mode,       {.i = TILE}},
     {  MOD4,             XK_m,          switch_mode,       {.i = MONOCLE}},
