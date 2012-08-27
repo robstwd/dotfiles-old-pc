@@ -107,7 +107,18 @@ static Key keys[] = {
     {  MOD1,             XK_F12,        spawn,             {.com = motioncmd}},
     {  0,                XK_Menu,       spawn,             {.com = menucmd}},
     {  0,                XK_Print,      spawn,             {.com = scrotcmd}},
- /* {  0,                XK_XF86Calculator,      spawn,    {.com = calccmd}},   */
+    
+ /* {  0,                0x1008FF19,    spawn,             {.com = XXXcmd}}, *//* Multimedia Mail key */
+    {  0,                0x1008FF18,    spawn,             {.com = chromiumcmd}},  /* Multimedia HomePage key */
+ /* {  0,                0x1008FF11,    spawn,             {.com = XXXcmd}}, *//* Multimedia AudioLowerVolume key */  /* 
+ /* {  0,                0x1008FF13,    spawn,             {.com = XXXcmd}}, *//* Multimedia AudioRaiseVolume key */  /* 
+ /* {  0,                0x1008FF81,    spawn,             {.com = XXXcmd}}, *//* Multimedia Tools key */ 
+ /* {  0,                0x1008FF12,    spawn,             {.com = XXXcmd}}, *//* Multimedia AudioMute key */ 
+ /* {  0,                0x1008FF14,    spawn,             {.com = XXXcmd}}, *//* Multimedia AudioPlay key */ 
+ /* {  0,                0x1008FF16,    spawn,             {.com = XXXcmd}}, *//* Multimedia AudioPrev key */ 
+ /* {  0,                0x1008FF17,    spawn,             {.com = XXXcmd}}, *//* Multimedia AudioNext key */ 
+ /* {  0,                0x1008FF17,    spawn,             {.com = XXXcmd}}, *//* Multimedia AudioNext key */ 
+    {  0,                0x1008FF1D,    spawn,             {.com = calccmd}}, /* Multimedia Calculator key */
 
     {  MOD1|SHIFT,       XK_c,          killclient,        {NULL}},        
       
