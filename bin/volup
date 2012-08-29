@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# ~/bin/volup
+
+amixer set PCM 5%+ unmute
+
+exit 0

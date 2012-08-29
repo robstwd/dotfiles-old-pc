@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# ~/bin/voldown
+
+amixer set PCM 5%- unmute
+
+exit 0
