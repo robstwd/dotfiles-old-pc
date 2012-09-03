@@ -84,3 +84,7 @@ compiler ruby				" Enable compiler support for ruby
 
 " from http://stackoverflow.com/questions/3787821/what-components-make-vim-a-good-great-ruby-editor
 map <Leader>r :w! <bar> !ruby %<CR>
+
+" from https://github.com/tpope/vim-pathogen
+call pathogen#infect()
+let g:Powerline_symbols = 'fancy'
