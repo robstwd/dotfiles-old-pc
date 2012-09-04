@@ -104,11 +104,11 @@ FileUtils.cp(testingfiles, "#{dest}testing/")
 puts "Copied #{testingfiles.length} testing files"
 
 # vim files
-#vimfiles = Dir.glob("/home/rob/.vim/*/*")
-#path = "/home/rob/"
-#vimfiles << "#{path}.vimrc"
-#FileUtils.cp_r(vimfiles, "#{dest}vim/")
-#puts "Copied #{vimfiles.length} vim files"
+vimfiles = Dir.glob("/home/rob/.vim/*")
+path = "/home/rob/"
+vimfiles << "#{path}.vimrc"
+FileUtils.cp_r(vimfiles, "#{dest}vim/")
+puts "Copied #{vimfiles.length} vim files"
 
 # motion files
 motionfiles = Dir.glob("/home/rob/.motion/*")
