@@ -88,3 +88,12 @@ map <Leader>r :w! <bar> !ruby %<CR>
 " from https://github.com/tpope/vim-pathogen
 call pathogen#infect()
 let g:Powerline_symbols = 'fancy'
+
+set encoding=utf-8
+set laststatus=2
+set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
+
+set conceallevel=2
+set nomodeline
+set noshowcmd
+set noshowmode
