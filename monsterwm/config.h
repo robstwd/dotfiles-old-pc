@@ -108,6 +108,7 @@ static Key keys[] = {
     
     {  MOD1,             XK_BackSpace,  focusurgent,       {NULL}},
     {  MOD1,             XK_F12,        spawn,             {.com = motioncmd}},
+    {  MOD1,             XK_Escape,     killclient,        {NULL}},
     {  0,                XK_Menu,       spawn,             {.com = menucmd}},
     {  0,                XK_Print,      spawn,             {.com = scrotcmd}},
     
