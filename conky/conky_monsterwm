@@ -12,7 +12,7 @@ use_spacer left
 # &1 	=> grey	  	127,127,127		Default foreground colour
 # &2	=> grey	  	179,179,179
 # &3	=> grey	  	153,153,153
-# &4	=> grey	  	204,204,204
+# &4	=> white	  255,255,255
 # &5	=> grey	  	68,68,68
 # &6	=> grey	  	85,85,85
 # &7	=> grey	  	102,102,102	
@@ -25,10 +25,10 @@ use_spacer left
 
 TEXT
  &R\
- &7|&2  ${if_match "${exec ruby ~/bin/pacnoob}"=="0"}pacnew &4${execi 120 ruby ~/bin/pacnoob}${else}&9pacnew ${execi 120 ruby ~/bin/pacnoob}${endif} \
- &7|&2  ${if_match "${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}"=="up to date"}dotfiles &4${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${else}&9dotfiles ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${endif}&B0 \
- &7|&2  cpu &4${cpu cpu1}% - ${cpu cpu2}%  \
- &7|&2  ${if_match "${memperc}">"80"}ram &4$memperc%  (${mem})${else}ram &4$memperc%  (${mem})${endif}  \
- &7|&2  home &4${fs_used_perc /home}%  \
- &7|&4  $kernel  \
- &7|&4  ${time %F %R} 
+ &6|&2  ${if_match "${exec ruby ~/bin/pacnoob}"=="0"}pacnew &4${execi 120 ruby ~/bin/pacnoob}${else}&9pacnew ${execi 120 ruby ~/bin/pacnoob}${endif} \
+ &6|&2  ${if_match "${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}"=="up to date"}dotfiles &4${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${else}&9dotfiles ${exec ruby ~/bin/get_git_status.rb ~/scripts/Projects/dotfiles}${endif}&B0 \
+ &6|&2  cpu &4${cpu cpu1}% - ${cpu cpu2}%  \
+ &6|&2  ${if_match "${memperc}">"80"}ram &4$memperc%  (${mem})${else}ram &4$memperc%  (${mem})${endif}  \
+ &6|&2  home &4${fs_used_perc /home}%  \
+ &6|&4  $kernel  \
+ &6|&4  ${time %F %R} 
