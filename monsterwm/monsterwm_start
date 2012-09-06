@@ -37,7 +37,7 @@ while read -t 60 -r wmout || true; do
             IFS=':' read -r d w m c u <<< "$desktop"
             
             #~ ((c)) => current desktop (fg=black, bg=blue; if not current then fg=grey & bg=black)
-            ((c)) && fg="&0" bg="&B8" i=" ${ms[$m]}" || fg="&3" bg="&B0"
+            ((c)) && fg="&2" bg="&B8" i=" ${ms[$m]}" || fg="&3" bg="&B0"
             
             #~ ((w)) => desktop with windows (fg=light grey & bg=dark grey)
             ((w)) && ((! c)) && fg="&2" bg="&B6" 
