@@ -68,6 +68,7 @@ static const char *alsacmd[] = { "urxvt", "-e", "alsamixer", NULL };
 static const char *digikamcmd[] = { "digikam", NULL };
 static const char *scrotcmd[] = { "scrot", "%Y-%m-%d-%H%M%S_$wx$h.png", NULL };
 static const char *shutdowncmd[] = { "sudo", "shutdown", "-h", "now", NULL };
+static const char *ncmpcppcmd[] = { "urxvt", "-e", "ncmpcpp", NULL };
 
 #define DESKTOPCHANGE(K,N) \
     {  MOD1,             K,              change_desktop, {.i = N}}, \
@@ -92,7 +93,7 @@ static Key keys[] = {
     {  MOD1,             XK_k,          spawn,             {.com = keepasscmd}},           
     {  MOD1,             XK_l,          spawn,             {.com = leafpadcmd}},          
     {  MOD1,             XK_m,          spawn,             {.com = menucmd}},          
- /* {  MOD1,             XK_n,  */         
+    {  MOD1,             XK_n,          spawn,             {.com = ncmpcppcmd}},
     {  MOD1,             XK_o,          spawn,             {.com = officecmd}},            
  /* {  MOD1,             XK_p,  */         
  /* {  MOD1,             XK_q,  */       
