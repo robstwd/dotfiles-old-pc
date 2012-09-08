@@ -29,7 +29,7 @@ alias stdm='xinit dminiwm_start'
 alias sts='xinit snapwm_start'
 
 # git aliases
-alias gs='git status'
+alias gs='clear && git status'
 alias ga='git add'
 alias gd='git diff'
 alias gdc='git diff --cached'
