@@ -169,3 +169,24 @@ bipolarbarfiles << "#{path}config.h"
 bipolarbarfiles << "#{path}config.h.def"
 FileUtils.cp_r(bipolarbarfiles, "#{dest}bipolarbar/")
 puts "Copied #{bipolarbarfiles.length} bipolarbar files"
+
+# mpd files
+path = "/home/rob/"
+mpdfiles = []
+mpdfiles << "#{path}.mpdconf"
+FileUtils.cp(mpdfiles, "#{dest}mpd/")
+puts "Copied #{mpdfiles.length} mpd files"
+
+# ncmpcpp files
+path = "/home/rob/.ncmpcpp/"
+ncmpcppfiles = []
+ncmpcppfiles << "#{path}config"
+FileUtils.cp(ncmpcppfiles, "#{dest}ncmpcpp/")
+puts "Copied #{ncmpcppfiles.length} ncmpcpp files"
+
+# fontconfig files
+path = "/home/rob/.config/fontconfig/"
+fontconfigfiles = []
+fontconfigfiles << "#{path}fonts.conf"
+FileUtils.cp(fontconfigfiles, "#{dest}fontconfig/")
+puts "Copied #{fontconfigfiles.length} fontconfig files"
