@@ -68,7 +68,7 @@ static const char *alsacmd[] = { "urxvt", "-e", "alsamixer", NULL };
 static const char *digikamcmd[] = { "digikam", NULL };
 static const char *scrotcmd[] = { "scrot", "%Y-%m-%d-%H%M%S_$wx$h.png", NULL };
 static const char *shutdowncmd[] = { "sudo", "shutdown", "-h", "now", NULL };
-static const char *ncmpcppcmd[] = { "urxvt", "-e", "ncmpcpp", NULL };
+static const char *ncmpcppcmd[] = { "urxvt", "-e", "ncmpcpp", "-s", "media-library", NULL };
 
 #define DESKTOPCHANGE(K,N) \
     {  MOD1,             K,              change_desktop, {.i = N}}, \
@@ -117,11 +117,10 @@ static Key keys[] = {
     {  0,                0x1008FF18,    spawn,             {.com = chromiumcmd}},  /* Multimedia HomePage key */
     {  0,                0x1008FF11,    spawn,             {.com = voldowncmd}}, /* Multimedia AudioLowerVolume key */
     {  0,                0x1008FF13,    spawn,             {.com = volupcmd}}, /* Multimedia AudioRaiseVolume key */
- /* {  0,                0x1008FF81,    spawn,             {.com = XXXcmd}}, /* Multimedia Tools key */ 
+    {  0,                0x1008FF81,    spawn,             {.com = ncmpcppcmd}}, /* Multimedia Tools key */ 
     {  0,                0x1008FF12,    spawn,             {.com = volmutecmd}}, /* Multimedia AudioMute key */ 
  /* {  0,                0x1008FF14,    spawn,             {.com = XXXcmd}}, *//* Multimedia AudioPlay key */ 
  /* {  0,                0x1008FF16,    spawn,             {.com = XXXcmd}}, *//* Multimedia AudioPrev key */ 
- /* {  0,                0x1008FF17,    spawn,             {.com = XXXcmd}}, *//* Multimedia AudioNext key */ 
  /* {  0,                0x1008FF17,    spawn,             {.com = XXXcmd}}, *//* Multimedia AudioNext key */ 
     {  0,                0x1008FF1D,    spawn,             {.com = calccmd}}, /* Multimedia Calculator key */
 
