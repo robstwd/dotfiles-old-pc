@@ -22,7 +22,7 @@ games:x:50:rob
 lock:x:54:
 network:x:90:
 video:x:91:rob
-audio:x:92:rob
+audio:x:92:rob,mpd
 optical:x:93:rob
 floppy:x:94:
 storage:x:95:rob
@@ -41,3 +41,4 @@ dovenull:x:74:
 usbmux:x:140:
 mysql:x:89:
 git:x:997:
+mpd:x:45:
