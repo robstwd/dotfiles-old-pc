@@ -24,3 +24,13 @@ URxvt.transparent: true
 URxvt.shading: 80 
 
 Urxvt.secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
+
+!------------------
+!Font config (https://wiki.archlinux.org/index.php/Font_Configuration)
+!------------------
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
