@@ -67,7 +67,7 @@ static const char *hugincmd[] = { "hugin", NULL };
 static const char *alsacmd[] = { "urxvt", "-e", "alsamixer", NULL };
 static const char *digikamcmd[] = { "digikam", NULL };
 static const char *scrotcmd[] = { "scrot", "%Y-%m-%d-%H%M%S_$wx$h.png", NULL };
-static const char *shutdowncmd[] = { "sudo", "shutdown", "-h", "now", NULL };
+static const char *shutdowncmd[] = { "sudo", "systemctl", "poweroff", NULL };
 static const char *ncmpcppcmd[] = { "urxvt", "-e", "ncmpcpp", "-s", "media-library", NULL };
 
 #define DESKTOPCHANGE(K,N) \
