@@ -188,5 +188,15 @@ puts "Copied #{ncmpcppfiles.length} ncmpcpp files"
 path = "/home/rob/.config/fontconfig/"
 fontconfigfiles = []
 fontconfigfiles << "#{path}fonts.conf"
+fontconfigfiles << "/usr/share/fonts/TTF/CousineRegen-Powerline.ttf"
 FileUtils.cp(fontconfigfiles, "#{dest}fontconfig/")
 puts "Copied #{fontconfigfiles.length} fontconfig files"
+
+# network files
+path = "/etc/"
+networkfiles = []
+networkfiles << "#{path}resolv.conf"
+networkfiles << "#{path}conf.d/network"
+networkfiles << "#{path}systemd/system/network.service"
+FileUtils.cp(networkfiles, "#{dest}network/")
+puts "Copied #{networkfiles.length} network files"
