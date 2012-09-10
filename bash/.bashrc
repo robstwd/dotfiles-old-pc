@@ -10,6 +10,11 @@ export EDITOR
 ## make tab cycle through commands rather than listing
 bind '"\t":menu-complete'
 
+# systemd aliases
+alias sa='systemd-analyze'
+alias sab='systemd-analyze blame'
+alias jnl='sudo journalctl'
+
 # aliases
 alias ls='ls --color=auto'
 alias lock='xscreensaver-command --lock'
