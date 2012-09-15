@@ -32,6 +32,7 @@ alias std='xinit dwm-personalised'
 alias stx='xinit xbmc'
 alias stdm='xinit dminiwm_start'
 alias sts='xinit snapwm_start'
+alias sti='xinit i3_start'
 
 # git aliases
 alias gs='clear && git status'
