@@ -178,7 +178,7 @@ static int xerrorstart(Display *dis, XErrorEvent *ee);
  * ww           - screen width
  * dis          - the display aka dpy
  * root         - the root window
- * wmatons      - array holding atoms for ICCCM support
+ * wmatoms      - array holding atoms for ICCCM support
  * netatoms     - array holding atoms for EWMH support
  * dekstops     - array of managed desktops
  * currdeskidx  - which desktop is currently active
@@ -245,11 +245,10 @@ Client* addwindow(Window w, Desktop *d) {
  * call the appropriate handler
  */
 void buttonpress(XEvent *e) {
-    Desktop *d = NULL;
-    Client *c = NULL;
+    Desktop *d = NULL; Client *c = NULL;
+    Bool w = wintoclient(e->xbutton.window, &c, &d);
 
-    if (wintoclient(e->xbutton.window, &c, &d) && CLICK_TO_FOCUS &&
-            c != d->curr && e->xbutton.button == Button1) focus(c, d);
+    if (w && CLICK_TO_FOCUS && c != d->curr && e->xbutton.button == FOCUS_BUTTON) focus(c, d);
 
     for (unsigned int i = 0; i < LENGTH(buttons); i++)
         if (CLEANMASK(buttons[i].mask) == CLEANMASK(e->xbutton.state) &&
@@ -261,21 +260,14 @@ void buttonpress(XEvent *e) {
 
 /**
  * focus another desktop
- *
- * to avoid flickering (esp. monocle mode):
- * first map the new windows
- * first the current window and then all other
- * then unmap the old windows
- * first all others then the current
+ * move in new windows
+ * move out old windows
  */
 void change_desktop(const Arg *arg) {
     if (arg->i == currdeskidx || arg->i < 0 || arg->i >= DESKTOPS) return;
     Desktop *d = &desktops[(prevdeskidx = currdeskidx)], *n = &desktops[(currdeskidx = arg->i)];
-    if (n->curr) XMapWindow(dis, n->curr->win);
-    for (Client *c = n->head; c; c = c->next) XMapWindow(dis, c->win);
-    for (Client *c = d->head; c; c = c->next) if (c != d->curr) XUnmapWindow(dis, c->win);
-    if (d->curr) XUnmapWindow(dis, d->curr->win);
     if (n->head) { tile(n); focus(n->curr, n); }
+    for (Client *c = d->head; c; c = c->next) XMoveWindow(dis, c->win, - 2 * ww, 0);
     desktopinfo();
 }
 
@@ -307,7 +299,7 @@ void client_to_desktop(const Arg *arg) {
     /* unlink current client from current desktop */
     if (d->head == c || !p) d->head = c->next; else p->next = c->next;
     c->next = NULL;
-    if (XUnmapWindow(dis, c->win)) focus(d->prev, d);
+    if (XMoveWindow(dis, c->win, - 2 * ww, 0)) focus(d->prev, d);
     if (!(c->isfloat || c->istrans) || (d->head && !d->head->next)) tile(d);
 
     /* link client to new desktop and make it the current */
@@ -338,9 +330,7 @@ void client_to_desktop(const Arg *arg) {
  * on its desktop.
  */
 void clientmessage(XEvent *e) {
-    Desktop *d = NULL;
-    Client *c = NULL;
-
+    Desktop *d = NULL; Client *c = NULL;
     if (!wintoclient(e->xclient.window, &c, &d)) return;
 
     if (e->xclient.message_type        == netatoms[NET_WM_STATE] && (
@@ -436,8 +426,7 @@ void desktopinfo(void) {
  * on receival, remove the client that held that window
  */
 void destroynotify(XEvent *e) {
-    Desktop *d = NULL;
-    Client *c = NULL;
+    Desktop *d = NULL; Client *c = NULL;
     if (wintoclient(e->xdestroywindow.window, &c, &d)) removeclient(c, d);
 }
 
@@ -448,8 +437,7 @@ void destroynotify(XEvent *e) {
  * and will get focus if FOLLOW_MOUSE is set in the config.
  */
 void enternotify(XEvent *e) {
-    Desktop *d = NULL;
-    Client *c = NULL;
+    Desktop *d = NULL; Client *c = NULL;
 
     if (FOLLOW_MOUSE && wintoclient(e->xcrossing.window, &c, &d) && e->xcrossing.mode == NotifyNormal
         && e->xcrossing.detail != NotifyInferior && e->xcrossing.window != d->curr->win) focus(c, d);
@@ -564,9 +552,7 @@ void focus(Client *c, Desktop *d) {
  * client, by the user, through the wm.
  */
 void focusin(XEvent *e) {
-    Desktop *d = NULL;
-    Client *c = NULL;
-
+    Desktop *d = NULL; Client *c = NULL;
     if (wintoclient(e->xfocus.window, &c, &d) && d->curr &&
         e->xfocus.window != d->curr->win) focus(d->curr, d);
 }
@@ -604,9 +590,9 @@ void grabbuttons(Client *c) {
     unsigned int b, m, modifiers[] = { 0, LockMask, numlockmask, numlockmask|LockMask };
 
     for (m = 0; CLICK_TO_FOCUS && m < LENGTH(modifiers); m++)
-        if (c != desktops[currdeskidx].curr) XGrabButton(dis, Button1, modifiers[m],
+        if (c != desktops[currdeskidx].curr) XGrabButton(dis, FOCUS_BUTTON, modifiers[m],
                 c->win, False, BUTTONMASK, GrabModeAsync, GrabModeAsync, None, None);
-        else XUngrabButton(dis, Button1, modifiers[m], c->win);
+        else XUngrabButton(dis, FOCUS_BUTTON, modifiers[m], c->win);
 
     for (b = 0, m = 0; b < LENGTH(buttons); b++, m = 0) while (m < LENGTH(modifiers))
         XGrabButton(dis, buttons[b].button, buttons[b].mask|modifiers[m++], c->win,
@@ -678,7 +664,7 @@ void killclient(void) {
 }
 
 /**
- * focus the previously focused desktop
+ * focus the previously/last focused desktop
  */
 void last_desktop(void) {
     change_desktop(&(Arg){.i = prevdeskidx});
@@ -697,15 +683,14 @@ void last_desktop(void) {
  * then display/map the window, else, if follow is set, focus the new desktop.
  */
 void maprequest(XEvent *e) {
-    Desktop *d = NULL;
-    Client *c = NULL;
+    Desktop *d = NULL; Client *c = NULL;
     Window w = e->xmaprequest.window;
     XWindowAttributes wa = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    if (wintoclient(w, &c, &d) || (XGetWindowAttributes(dis, w, &wa) && wa.override_redirect)) return;
+
     XClassHint ch = {0, 0};
     Bool follow = False, floating = False;
     int newdsk = currdeskidx;
-
-    if (wintoclient(w, &c, &d) || (XGetWindowAttributes(dis, w, &wa) && wa.override_redirect)) return;
 
     if (XGetClassHint(dis, w, &ch)) for (unsigned int i = 0; i < LENGTH(rules); i++)
         if (strstr(ch.res_class, rules[i].class) || strstr(ch.res_name, rules[i].class)) {
@@ -912,11 +897,12 @@ void prev_win(void) {
  * set unrgent hint for a window
  */
 void propertynotify(XEvent *e) {
-    Desktop *d = NULL;
-    Client *c = NULL;
+    Desktop *d = NULL; Client *c = NULL;
     if (e->xproperty.atom != XA_WM_HINTS || !wintoclient(e->xproperty.window, &c, &d)) return;
+
     XWMHints *wmh = XGetWMHints(dis, c->win);
     c->isurgn = (c != desktops[currdeskidx].curr && wmh && (wmh->flags & XUrgencyHint));
+
     if (wmh) XFree(wmh);
     desktopinfo();
 }
@@ -1193,13 +1179,12 @@ void togglepanel(void) {
 }
 
 /**
- * windows that request to unmap should lose their
- * client, so invisible windows do not exist on screen
+ * windows that request to unmap should lose their client
+ * so invisible windows do not exist on screen
  */
 void unmapnotify(XEvent *e) {
-    Desktop *d = NULL;
-    Client *c = NULL;
-    if (e->xunmap.send_event && wintoclient(e->xunmap.window, &c, &d)) removeclient(c, d);
+    Desktop *d = NULL; Client *c = NULL;
+    if (wintoclient(e->xunmap.window, &c, &d)) removeclient(c, d);
 }
 
 /**
@@ -1247,3 +1232,5 @@ int main(int argc, char *argv[]) {
     XCloseDisplay(dis);
     return retval;
 }
+
+/* vim: set expandtab ts=4 sts=4 sw=4 : */
