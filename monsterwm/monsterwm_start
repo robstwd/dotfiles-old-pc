@@ -53,7 +53,9 @@ while read -t 60 -r wmout || true; do
 
 done < "$ff" | bipolarbar &
 
-conky -c ~/.config/conky/conky_monsterwm| while read -r; do xsetroot -name "$REPLY"; done &
+#~ conky -c ~/.config/conky/conky_monsterwm| while read -r; do xsetroot -name "$REPLY"; done &
+
+bipolarbar_status &
 
 monsterwm > "$ff"
 
