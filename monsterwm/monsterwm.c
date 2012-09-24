@@ -13,10 +13,12 @@
 #include <X11/Xproto.h>
 #include <X11/Xatom.h>
 
-#define LENGTH(x)       (sizeof(x)/sizeof(*x))
-#define CLEANMASK(mask) (mask & ~(numlockmask | LockMask))
-#define BUTTONMASK      ButtonPressMask|ButtonReleaseMask
-#define ISFFT(c)        (c->isfull || c->isfloat || c->istrans)
+#define LENGTH(x)                (sizeof(x)/sizeof(*x))
+#define CLEANMASK(mask)          (mask & ~(numlockmask | LockMask))
+#define BUTTONMASK               ButtonPressMask|ButtonReleaseMask
+#define ISFFT(c)                 (c->isfull || c->isfloat || c->istrans)
+#define MVRSZ(c, _x, _y, _w, _h) XMoveResizeWindow(dis, c->win, c->x = _x, c->y = _y, _w, _h)
+#define MV(c, _x, _y)            XMoveWindow(dis, c->win, c->x = _x, c->y = _y)
 
 enum { RESIZE, MOVE };
 enum { TILE, MONOCLE, BSTACK, GRID, FLOAT, MODES };
@@ -118,6 +120,7 @@ typedef struct Client {
     struct Client *next;
     Bool isurgn, isfull, isfloat, istrans;
     Window win;
+    int x, y;
 } Client;
 
 /**
@@ -184,8 +187,8 @@ static int xerrorstart(Display *dis, XErrorEvent *ee);
  * currdeskidx  - which desktop is currently active
  */
 static Bool running = True;
-static int wh, ww, currdeskidx = 0, prevdeskidx = 0, retval = 0;
-static unsigned int numlockmask = 0, win_unfocus, win_focus;
+static int wh, ww, off_x, off_y, currdeskidx, prevdeskidx, retval;
+static unsigned int numlockmask, win_unfocus, win_focus;
 static Display *dis;
 static Window root;
 static Atom wmatoms[WM_COUNT], netatoms[NET_COUNT];
@@ -266,8 +269,9 @@ void buttonpress(XEvent *e) {
 void change_desktop(const Arg *arg) {
     if (arg->i == currdeskidx || arg->i < 0 || arg->i >= DESKTOPS) return;
     Desktop *d = &desktops[(prevdeskidx = currdeskidx)], *n = &desktops[(currdeskidx = arg->i)];
+    for (Client *c = n->head; c; c = c->next) MV(c, c->x - off_x, c->y - off_y);
     if (n->head) { tile(n); focus(n->curr, n); }
-    for (Client *c = d->head; c; c = c->next) XMoveWindow(dis, c->win, - 2 * ww, 0);
+    for (Client *c = d->head; c; c = c->next) MV(c, c->x + off_x, c->y + off_y);
     desktopinfo();
 }
 
@@ -299,7 +303,7 @@ void client_to_desktop(const Arg *arg) {
     /* unlink current client from current desktop */
     if (d->head == c || !p) d->head = c->next; else p->next = c->next;
     c->next = NULL;
-    if (XMoveWindow(dis, c->win, - 2 * ww, 0)) focus(d->prev, d);
+    if (MV(c, c->x + off_x, c->y + off_y)) focus(d->prev, d);
     if (!(c->isfloat || c->istrans) || (d->head && !d->head->next)) tile(d);
 
     /* link client to new desktop and make it the current */
@@ -363,16 +367,13 @@ void clientmessage(XEvent *e) {
  * some windows implement window manager functions themselves.
  * that is windows explicitly steal focus, or manage subwindows,
  * or move windows around w/o the window manager's help, etc..
- * to disallow this behavior, one should 'tile()' the desktop
- * from which the configure request came from.
- * however we skip this, and let such apps (ie Chromium) do their thing.
- * to reset the window just retile the desktop.
+ * to disallow this behavior, we 'tile()' the desktop to which
+ * the window that sent the configure request belongs.
  */
 void configurerequest(XEvent *e) {
     XConfigureRequestEvent *ev = &e->xconfigurerequest;
     XWindowChanges wc = { ev->x, ev->y,  ev->width, ev->height, ev->border_width, ev->above, ev->detail };
-    XConfigureWindow(dis, ev->window, ev->value_mask, &wc);
-    XSync(dis, False);
+    if (XConfigureWindow(dis, ev->window, ev->value_mask, &wc)) XSync(dis, False);
     Desktop *d = NULL; Client *c = NULL;
     if (wintoclient(ev->window, &c, &d)) tile(d);
 }
@@ -534,7 +535,7 @@ void focus(Client *c, Desktop *d) {
     }
     XRestackWindows(dis, w, LENGTH(w));
 
-    XSetInputFocus(dis, d->curr->win, RevertToPointerRoot, CurrentTime);
+    if (&desktops[currdeskidx] == d) XSetInputFocus(dis, d->curr->win, RevertToPointerRoot, CurrentTime);
     XChangeProperty(dis, root, netatoms[NET_ACTIVE], XA_WINDOW, 32,
                     PropModeReplace, (unsigned char *)&d->curr->win, 1);
 
@@ -630,7 +631,7 @@ void grid(int x, int y, int w, int h, const Desktop *d) {
     for (Client *c = d->head; c; c = c->next) {
         if (ISFFT(c)) continue; else ++i;
         if (i/rows + 1 > cols - n%cols) rows = n/cols + 1;
-        XMoveResizeWindow(dis, c->win, x + cn*cw, y + rn*ch/rows, cw - BORDER_WIDTH, ch/rows - BORDER_WIDTH);
+        MVRSZ(c, (x + cn*cw), (y + rn*ch/rows), (cw - BORDER_WIDTH), (ch/rows - BORDER_WIDTH));
         if (++rn >= rows) { rn = 0; cn++; }
     }
 }
@@ -704,7 +705,7 @@ void maprequest(XEvent *e) {
     c = addwindow(w, (d = &desktops[newdsk])); /* from now on, use c->win */
     c->istrans = XGetTransientForHint(dis, c->win, &w);
     if ((c->isfloat = (floating || d->mode == FLOAT)) && !c->istrans)
-        XMoveWindow(dis, c->win, (ww - wa.width)/2, (wh - wa.height)/2);
+        MV(c, (ww - wa.width)/2, (wh - wa.height)/2);
 
     int i; unsigned long l; unsigned char *state = NULL; Atom a;
     if (XGetWindowProperty(dis, c->win, netatoms[NET_WM_STATE], 0L, sizeof a,
@@ -712,8 +713,9 @@ void maprequest(XEvent *e) {
         setfullscreen(c, d, (*(Atom *)state == netatoms[NET_FULLSCREEN]));
     if (state) XFree(state);
 
-    if (currdeskidx == newdsk) { if (!ISFFT(c)) tile(d); XMapWindow(dis, c->win); }
-    else if (follow) change_desktop(&(Arg){.i = newdsk});
+    if (currdeskidx != newdsk) MV(c, c->x + off_x, c->y + off_y); else if (!ISFFT(c)) tile(d);
+    if (follow) change_desktop(&(Arg){.i = newdsk});
+    XMapWindow(dis, c->win);
     focus(c, d);
 
     if (!follow) desktopinfo();
@@ -758,7 +760,7 @@ void mousemotion(const Arg *arg) {
             yh = (arg->i == MOVE ? wa.y:wa.height) + ev.xmotion.y - ry;
             if (arg->i == RESIZE) XResizeWindow(dis, d->curr->win,
                     xw > MINWSZ ? xw:wa.width, yh > MINWSZ ? yh:wa.height);
-            else if (arg->i == MOVE) XMoveWindow(dis, d->curr->win, xw, yh);
+            else if (arg->i == MOVE) MV(d->curr, xw, yh);
         } else if (ev.type == ConfigureRequest || ev.type == MapRequest) events[ev.type](&ev);
     } while (ev.type != ButtonRelease);
 
@@ -770,7 +772,7 @@ void mousemotion(const Arg *arg) {
  * each window should cover all the available screen space
  */
 void monocle(int x, int y, int w, int h, const Desktop *d) {
-    for (Client *c = d->head; c; c = c->next) if (!ISFFT(c)) XMoveResizeWindow(dis, c->win, x, y, w, h);
+    for (Client *c = d->head; c; c = c->next) if (!ISFFT(c)) MVRSZ(c, x, y, w, h);
 }
 
 /**
@@ -861,8 +863,8 @@ void moveresize(const Arg *arg) {
     XWindowAttributes wa;
     if (!d->curr || !XGetWindowAttributes(dis, d->curr->win, &wa)) return;
     if (!d->curr->isfloat && !d->curr->istrans) { d->curr->isfloat = True; tile(d); focus(d->curr, d); }
-    XMoveResizeWindow(dis, d->curr->win, wa.x + ((int *)arg->v)[0], wa.y + ((int *)arg->v)[1],
-                                wa.width + ((int *)arg->v)[2], wa.height + ((int *)arg->v)[3]);
+    MVRSZ(d->curr, wa.x + ((int *)arg->v)[0], wa.y + ((int *)arg->v)[1],
+          wa.width + ((int *)arg->v)[2], wa.height + ((int *)arg->v)[3]);
 }
 
 /**
@@ -993,7 +995,8 @@ void setfullscreen(Client *c, Desktop *d, Bool fullscrn) {
     if (fullscrn != c->isfull) XChangeProperty(dis, c->win,
             netatoms[NET_WM_STATE], XA_ATOM, 32, PropModeReplace, (unsigned char*)
             ((c->isfull = fullscrn) ? &netatoms[NET_FULLSCREEN]:0), fullscrn);
-    if (fullscrn) XMoveResizeWindow(dis, c->win, 0, 0, ww, wh + PANEL_HEIGHT);
+    Bool b = (&desktops[currdeskidx] == d);
+    if (fullscrn) MVRSZ(c, b ? 0:off_x, b ? 0:off_y, ww, wh + PANEL_HEIGHT);
     XSetWindowBorderWidth(dis, c->win, (c->isfull || !d->head->next ? 0:BORDER_WIDTH));
 }
 
@@ -1014,6 +1017,10 @@ void setup(void) {
     /* initialize mode and panel visibility for each desktop */
     for (unsigned int d = 0; d < DESKTOPS; d++)
         desktops[d] = (Desktop){ .mode = DEFAULT_MODE, .sbar = SHOW_PANEL };
+
+    /* set offset values used to move windows out of view */
+    off_x = 2 * ww;
+    off_y = 2 * wh;
 
     /* get color for focused and unfocused client borders */
     win_focus = getcolor(FOCUS, screen);
@@ -1110,24 +1117,24 @@ void stack(int x, int y, int w, int h, const Desktop *d) {
      * should be added to the first stack client (p) so that it satisfies sasz,
      * and also, does not result in gaps created on the bottom of the screen.
      */
-    if (c && !n) XMoveResizeWindow(dis, c->win, x, y, w - 2*BORDER_WIDTH, h - 2*BORDER_WIDTH);
+    if (c && !n) MVRSZ(c, x, y, w - 2*BORDER_WIDTH, h - 2*BORDER_WIDTH);
     if (!c || !n) return; else if (n > 1) { p = (z - d->sasz)%n + d->sasz; z = (z - d->sasz)/n; }
 
     /* tile the first non-floating, non-fullscreen window to cover the master area */
-    if (b) XMoveResizeWindow(dis, c->win, x, y, w - 2*BORDER_WIDTH, ma - BORDER_WIDTH);
-    else   XMoveResizeWindow(dis, c->win, x, y, ma - BORDER_WIDTH, h - 2*BORDER_WIDTH);
+    if (b) MVRSZ(c, x, y, w - 2*BORDER_WIDTH, ma - BORDER_WIDTH);
+    else   MVRSZ(c, x, y, ma - BORDER_WIDTH, h - 2*BORDER_WIDTH);
 
     /* tile the next non-floating, non-fullscreen (and first) stack window adding p */
     for (c = c->next; c && ISFFT(c); c = c->next);
     int cw = (b ? h:w) - 2*BORDER_WIDTH - ma, ch = z - BORDER_WIDTH;
-    if (b) XMoveResizeWindow(dis, c->win, x, y += ma, ch - BORDER_WIDTH + p, cw);
-    else   XMoveResizeWindow(dis, c->win, x += ma, y, cw, ch - BORDER_WIDTH + p);
+    if (b) MVRSZ(c, x, y += ma, ch - BORDER_WIDTH + p, cw);
+    else   MVRSZ(c, x += ma, y, cw, ch - BORDER_WIDTH + p);
 
     /* tile the rest of the non-floating, non-fullscreen stack windows */
     for (b ? (x += ch+p):(y += ch+p), c = c->next; c; c = c->next) {
         if (ISFFT(c)) continue;
-        if (b) { XMoveResizeWindow(dis, c->win, x, y, ch, cw); x += z; }
-        else   { XMoveResizeWindow(dis, c->win, x, y, cw, ch); y += z; }
+        if (b) { MVRSZ(c, x, y, ch, cw); x += z; }
+        else   { MVRSZ(c, x, y, cw, ch); y += z; }
     }
 }
 
@@ -1165,7 +1172,7 @@ void switch_mode(const Arg *arg) {
  * call the tiling handler fucntion taking account the panel height
  */
 void tile(Desktop *d) {
-    if (!d->head || d->mode == FLOAT) return; /* nothing to arange */
+    if (&desktops[currdeskidx] != d || !d->head || d->mode == FLOAT) return;
     layout[d->head->next ? d->mode:MONOCLE](0, TOP_PANEL && d->sbar ? PANEL_HEIGHT:0,
                                                   ww, wh + (d->sbar ? 0:PANEL_HEIGHT), d);
 }
