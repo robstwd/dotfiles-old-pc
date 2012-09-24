@@ -42,3 +42,4 @@ usbmux:x:140:
 mysql:x:89:
 git:x:997:
 mpd:x:45:
+uuidd:x:996:
