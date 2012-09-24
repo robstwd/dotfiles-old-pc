@@ -55,7 +55,7 @@ done < "$ff" | bipolarbar &
 
 #~ conky -c ~/.config/conky/conky_monsterwm| while read -r; do xsetroot -name "$REPLY"; done &
 
-bipolarbar_status &
+~/scripts/Projects/bipolarbar_status/bipolarbar_status2 &
 
 monsterwm > "$ff"
 
